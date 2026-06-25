@@ -350,7 +350,7 @@ function buildLektion(amnesgrupp, amne, omrade, kapitel, nivaer, v = 0) {
 }
 
 // ─── LEKTION-KORT ─────────────────────────────────────────────────────────────
-function LektionKort({ l, onKopiera, onPrint, kopieradt }) {
+function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
   const [aktivSteg, setAktivSteg] = useState(null);
 
   function exportText() {
