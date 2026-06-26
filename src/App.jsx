@@ -33,7 +33,7 @@ const AMNEN = {
     "Matematik": { "Tal och räkning": ["Räkna 1–10","Räkna 1–20","Addition med konkret material","Subtraktion med konkret material","Pengar och betalning i vardagen"], "Mätning och tid": ["Klockan – hel och halv","Dagar och veckor","Mäta längd med linjal","Väga föremål","Kalender och planering"], "Geometri och mönster": ["Känna igen former","Sortera och kategorisera","Enkla mönster","Rumslig förståelse"] },
     "NO": { "Kropp och hälsa": ["Kroppens delar","Sunda vanor – mat och sömn","Hygien i vardagen","Känslor och välmående","Kroppen vid rörelse"], "Natur och miljö": ["Årstider","Djur och natur nära oss","Väder och klimat","Källsortering och miljö","Vatten och naturresurser"] },
     "SO": { "Samhälle och vardag": ["Familjen och hemmet","Regler och lagar","Att handla och betala","Kollektivtrafik och samhällsservice","Demokrati på enkel nivå"], "Historia och traditioner": ["Högtider och traditioner","Tid – dåtid och nutid","Hur levde man förr?","Svenska traditioner"] },
-    "Engelska": { "Kommunikation": ["Hälsa och presentera sig","Färger och siffror på engelska","Kroppsdelar på engelska","Vardagsfraser","Förstå enkla instruktioner på engelska"] },
+    "Engelska": { "Kommunikation": ["Hälsa och presentera sig","Färger och siffror på engelska","Kroppsdelar på engelska","Vardagsfraser","Förstå enkla instruktioner på engelska"], "Ord och fraser": ["Djur på engelska","Mat och dryck på engelska","Kläder på engelska","Siffror 1–20 på engelska","Dagar och månader på engelska"], "Lyssna och förstå": ["Följa enkla instruktioner på engelska","Enkla sånger och ramsor","Titta på korta filmer på engelska","Räkna och benämna på engelska","Förstå och svara på enkla frågor"] },
     "Bild": { "Skapande": ["Rita med olika verktyg","Måla med fingrar och penslar","Collage och klipp-klistra","Digitalt bildskapande","Bild som kommunikation"] },
     "Musik": { "Musicerande": ["Sjunga enkla sånger","Rytm och rörelse","Spela enkla instrument","Lyssna och reagera på musik","Musik och känslor"] },
     "Idrott och hälsa": { "Rörelse och lek": ["Grundrörelser – gå, springa, hoppa","Balans och koordination","Enkla bollövningar","Dans och rörelse till musik","Utomhusaktiviteter"], "Hälsa": ["Vikten av rörelse","Kost och välmående","Vila och återhämtning","Hygien efter rörelse"] },
@@ -665,6 +665,24 @@ const CHATT_EXEMPEL = [
   "Vad säger Lgrsär22 om ämnesområdet Kommunikation?",
 ];
 
+const chattCSS = `
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  @keyframes sgpulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+  @keyframes sgfi { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+  .sgfi { animation: sgfi .35s ease; }
+  .sgdot { width:7px; height:7px; border-radius:50%; background:#4caf50; animation:sgpulse 1.2s ease infinite; }
+  .sg-ex-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:.75rem 1rem; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:.83rem; color:#b0d4b0; text-align:left; transition:all .2s; display:flex; align-items:center; gap:.7rem; }
+  .sg-ex-btn:hover { border-color:rgba(76,175,80,0.5); background:rgba(76,175,80,0.1); color:#81c784; }
+  .sg-send { border:none; border-radius:12px; padding:.75rem 1.1rem; font-size:1.1rem; font-weight:700; cursor:pointer; transition:all .2s; flex-shrink:0; }
+  .sg-send:not(:disabled):hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(76,175,80,.4); }
+  .sg-textarea { border-radius:14px; padding:.75rem 1rem; font-size:.88rem; resize:none; line-height:1.6; box-sizing:border-box; width:100%; outline:none; font-family:'DM Sans',sans-serif; transition:border-color .2s; }
+  .sg-textarea:focus { border-color:rgba(76,175,80,0.6) !important; }
+  .sg-copy-btn { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:3px 8px; cursor:pointer; font-size:12px; color:#80a080; font-family:inherit; transition:all .15s; }
+  .sg-copy-btn:hover { background:rgba(76,175,80,0.15); color:#81c784; }
+`;
+
 function ChattLage({ onBack }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
@@ -696,59 +714,109 @@ function ChattLage({ onBack }) {
   }
 
   return (
-    <div style={{ height: "100vh", background: "linear-gradient(135deg,#e8f5e9,#f1f8e9)", fontFamily: "Georgia,serif", display: "flex", flexDirection: "column" }}>
-      <style>{`@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}.dot{animation:pulse 1.2s ease infinite}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.fi{animation:fi .35s ease}ul{padding-left:1.2rem;margin:.3rem 0}li{margin-bottom:.28rem;line-height:1.55;color:#1a2e1a}textarea:focus{border-color:#2e7d32!important;outline:none}`}</style>
-      <div style={{ background: "#1b5e20", padding: ".8rem 1rem", display: "flex", alignItems: "center", gap: ".65rem", flexShrink: 0 }}>
-        <button onClick={onBack} style={{ background: "rgba(255,255,255,0.15)", border: "none", borderRadius: 7, padding: ".28rem .6rem", color: "white", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".78rem" }}>← Hem</button>
-        <span style={{ fontSize: "1.15rem" }}>♿</span>
+    <div style={{ height: "100vh", background: "linear-gradient(135deg,#0a1628 0%,#0d2137 50%,#0a2818 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "#e0e8e0" }}>
+      <style>{chattCSS}</style>
+
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg,rgba(76,175,80,0.15),rgba(46,125,50,0.08))", borderBottom: "1px solid rgba(76,175,80,0.2)", padding: ".9rem 1.2rem", display: "flex", alignItems: "center", gap: ".8rem", flexShrink: 0, boxShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
+        <button onClick={onBack} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: ".35rem .85rem", color: "#b0d4b0", cursor: "pointer", fontFamily: "inherit", fontSize: ".78rem" }}>← Hem</button>
+        <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0, boxShadow: "0 2px 12px rgba(76,175,80,0.4)" }}>♿</div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: "white", fontWeight: 700, fontSize: ".88rem" }}>SpecialGuiden</div>
-          <div style={{ color: "#a5d6a7", fontSize: ".65rem" }}>Chattläge · Lgrsär22 · Grundsärskolan</div>
+          <div style={{ color: "#81c784", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Playfair Display',serif", letterSpacing: ".3px" }}>SpecialGuiden</div>
+          <div style={{ color: "#4a7c4a", fontSize: ".68rem" }}>Chattläge · Lgrsär22 · Grundsärskolan · IF</div>
         </div>
-        {messages.length > 0 && <button onClick={() => setMessages([])} style={{ background: "rgba(255,255,255,0.15)", border: "none", borderRadius: 7, padding: ".28rem .7rem", color: "white", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".72rem" }}>Rensa</button>}
+        {messages.length > 0 && (
+          <button onClick={() => setMessages([])} style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 7, padding: ".3rem .8rem", color: "#80a080", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem" }}>Rensa</button>
+        )}
+        {messages.some(m => m.role === "assistant") && (
+          <button onClick={() => window.print()} style={{ background: "linear-gradient(135deg,#6a1b9a,#4a148c)", border: "none", borderRadius: 7, padding: ".3rem .8rem", color: "white", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem", fontWeight: 600 }}>🖨️ Skriv ut</button>
+        )}
       </div>
-      <div style={{ flex: 1, overflowY: "auto", padding: ".9rem", maxWidth: 680, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+
+      {/* Meddelanden */}
+      <div style={{ flex: 1, overflowY: "auto", padding: "1.2rem", maxWidth: 720, width: "100%", margin: "0 auto", boxSizing: "border-box" }}>
+
         {messages.length === 0 && (
-          <div className="fi" style={{ textAlign: "center", padding: "1.2rem .5rem" }}>
-            <div style={{ fontSize: "2rem", marginBottom: ".7rem" }}>♿</div>
-            <h2 style={{ color: "#1b5e20", margin: "0 0 .35rem", fontSize: "1.1rem" }}>Hej! Vad behöver du?</h2>
-            <p style={{ color: "#4a7c59", fontSize: ".83rem", marginBottom: "1rem" }}>Beskriv fritt – jag hjälper dig med Lgrsär22, AKK och anpassad undervisning.</p>
-            <div style={{ display: "grid", gap: ".4rem" }}>
+          <div className="sgfi" style={{ textAlign: "center", padding: "2rem .5rem" }}>
+            <div style={{ width: 76, height: 76, borderRadius: "50%", background: "linear-gradient(135deg,rgba(76,175,80,0.2),rgba(46,125,50,0.1))", border: "1px solid rgba(76,175,80,0.3)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem", fontSize: "2.2rem", boxShadow: "0 4px 20px rgba(76,175,80,0.2)" }}>♿</div>
+            <h2 style={{ color: "#81c784", margin: "0 0 .5rem", fontFamily: "'Playfair Display',serif", fontSize: "1.4rem" }}>Hej! Vad behöver du?</h2>
+            <p style={{ color: "#4a6a4a", fontSize: ".85rem", lineHeight: 1.7, maxWidth: 400, margin: "0 auto 2rem" }}>
+              Jag hjälper dig med Lgrsär22, AKK-strategier, anpassad undervisning och lektionsplanering för elever med IF.
+            </p>
+            <div style={{ display: "grid", gap: ".5rem", textAlign: "left", maxWidth: 520, margin: "0 auto 1.5rem" }}>
               {CHATT_EXEMPEL.map((ex, i) => (
-                <button key={i} onClick={() => sendMessage(ex)} style={{ background: "white", border: "2px solid #c8e6c9", borderRadius: 11, padding: ".6rem .85rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".8rem", color: "#1a3a2a", textAlign: "left" }}>💬 {ex}</button>
+                <button key={i} className="sg-ex-btn" onClick={() => sendMessage(ex)}>
+                  <span style={{ fontSize: ".95rem", flexShrink: 0, opacity: .7 }}>💬</span>
+                  <span>{ex}</span>
+                </button>
               ))}
+            </div>
+            <div style={{ padding: ".8rem 1.2rem", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, fontSize: ".74rem", color: "#3a5a3a", maxWidth: 520, margin: "0 auto" }}>
+              💡 Tips: Beskriv gärna elevens nivå och eventuella diagnoser – ju mer info desto bättre svar
             </div>
           </div>
         )}
+
         {messages.map((msg, i) => (
-          <div key={i} className="fi" style={{ marginBottom: ".85rem", display: "flex", flexDirection: "column", alignItems: msg.role === "user" ? "flex-end" : "flex-start" }}>
-            {msg.role === "user"
-              ? <div style={{ background: "#2e7d32", color: "white", borderRadius: "16px 16px 4px 16px", padding: ".6rem .95rem", maxWidth: "80%", fontSize: ".86rem", lineHeight: 1.5 }}>{msg.content}</div>
-              : <div style={{ width: "100%" }}>
-                  <div style={{ color: "#2e7d32", fontSize: ".75rem", marginBottom: ".28rem", fontWeight: 700 }}>♿ SpecialGuiden</div>
-                  <div style={{ background: "white", borderRadius: "4px 16px 16px 16px", padding: ".8rem 1rem", fontSize: ".85rem", color: "#1a2e1a", lineHeight: 1.7, whiteSpace: "pre-wrap", boxShadow: "0 2px 8px rgba(46,125,50,.08)" }}>{msg.content}</div>
-                </div>}
+          <div key={i} className="sgfi" style={{ marginBottom: "1.1rem", display: "flex", flexDirection: "column", alignItems: msg.role === "user" ? "flex-end" : "flex-start" }}>
+            {msg.role === "user" ? (
+              <div style={{ background: "linear-gradient(135deg,rgba(76,175,80,0.25),rgba(46,125,50,0.15))", border: "1px solid rgba(76,175,80,0.3)", color: "#c8e6c9", borderRadius: "18px 18px 4px 18px", padding: ".75rem 1.1rem", maxWidth: "82%", fontSize: ".86rem", lineHeight: 1.65 }}>
+                {msg.content}
+              </div>
+            ) : (
+              <div style={{ width: "100%", maxWidth: "92%" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: ".45rem", marginBottom: ".35rem", justifyContent: "space-between" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: ".45rem" }}>
+                    <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0 }}>♿</div>
+                    <span style={{ color: "#81c784", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".3px" }}>SpecialGuiden</span>
+                  </div>
+                  <button className="sg-copy-btn"
+                    onClick={() => { navigator.clipboard.writeText(msg.content).then(() => { const btn = document.getElementById(`sgcopy-${i}`); if (btn) { btn.textContent = "✅"; setTimeout(() => btn.textContent = "📋", 2000); } }); }}
+                    id={`sgcopy-${i}`}>📋</button>
+                </div>
+                <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px 18px 18px 18px", padding: ".95rem 1.15rem", fontSize: ".86rem", color: "#c8d8c8", lineHeight: 1.8, whiteSpace: "pre-wrap", boxShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
+                  {msg.content}
+                </div>
+              </div>
+            )}
           </div>
         ))}
+
         {loading && (
-          <div style={{ display: "flex", alignItems: "center", gap: ".45rem", marginBottom: ".85rem" }}>
-            <div style={{ color: "#2e7d32", fontSize: ".75rem", fontWeight: 700 }}>♿ SpecialGuiden</div>
-            <div style={{ background: "white", borderRadius: "4px 16px 16px 16px", padding: ".6rem .9rem" }}>
-              <div style={{ display: "flex", gap: ".28rem", alignItems: "center" }}>
-                {[0, .2, .4].map((d, i) => <div key={i} className="dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "#2e7d32", animationDelay: `${d}s` }} />)}
-                <span style={{ fontSize: ".76rem", color: "#4a7c59", marginLeft: ".28rem" }}>Tänker…</span>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: ".5rem", marginBottom: "1rem" }}>
+            <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0, marginTop: 2 }}>♿</div>
+            <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px 18px 18px 18px", padding: ".75rem 1rem" }}>
+              <div style={{ display: "flex", gap: ".35rem", alignItems: "center" }}>
+                {[0, .2, .4].map((d, i) => <div key={i} className="sgdot" style={{ animationDelay: `${d}s` }} />)}
+                <span style={{ fontSize: ".74rem", color: "#4a7a4a", marginLeft: ".4rem" }}>Tänker…</span>
               </div>
             </div>
           </div>
         )}
         <div ref={chatEndRef} />
       </div>
-      <div style={{ background: "white", borderTop: "1px solid #e8f5e9", padding: ".7rem .9rem", flexShrink: 0 }}>
-        <div style={{ maxWidth: 680, margin: "0 auto", display: "flex", gap: ".45rem", alignItems: "flex-end" }}>
-          <textarea value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(input); } }} placeholder="T.ex. 'Tips på AKK-aktivitet' eller 'Genomgång hygien tre nivåer'..." rows={2} style={{ flex: 1, border: "2px solid #a5d6a7", borderRadius: 12, padding: ".6rem .85rem", fontFamily: "Georgia,serif", fontSize: ".86rem", color: "#1a3a2a", resize: "none", lineHeight: 1.5, boxSizing: "border-box" }} />
-          <button onClick={() => sendMessage(input)} disabled={!input.trim() || loading} style={{ background: !input.trim() || loading ? "#c8e6c9" : "linear-gradient(135deg,#2e7d32,#1b5e20)", color: "white", border: "none", borderRadius: 10, padding: ".68rem .95rem", cursor: !input.trim() || loading ? "default" : "pointer", fontSize: "1.05rem" }}>➤</button>
+
+      {/* Input */}
+      <div style={{ background: "linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))", borderTop: "1px solid rgba(76,175,80,0.15)", padding: ".9rem 1.2rem", flexShrink: 0, boxShadow: "0 -2px 20px rgba(0,0,0,0.3)" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto", display: "flex", gap: ".6rem", alignItems: "flex-end" }}>
+          <textarea
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(input); } }}
+            placeholder="T.ex. 'Tips på AKK-aktivitet' eller 'Genomgång hygien tre nivåer'..."
+            rows={2}
+            className="sg-textarea"
+            style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.13)", color: "#c8d8c8" }}
+          />
+          <button
+            onClick={() => sendMessage(input)}
+            disabled={!input.trim() || loading}
+            className="sg-send"
+            style={{ background: !input.trim() || loading ? "rgba(76,175,80,0.12)" : "linear-gradient(135deg,#4caf50,#2e7d32)", color: !input.trim() || loading ? "#3a6a3a" : "white" }}>
+            ➤
+          </button>
         </div>
-        <p style={{ textAlign: "center", color: "#a5d6a7", fontSize: ".65rem", margin: ".35rem 0 0" }}>Enter för att skicka · Shift+Enter för ny rad</p>
+        <p style={{ textAlign: "center", color: "#2a4a2a", fontSize: ".65rem", margin: ".4rem 0 0" }}>Enter för att skicka · Shift+Enter för ny rad</p>
       </div>
     </div>
   );
