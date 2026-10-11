@@ -644,20 +644,6 @@ function GuidatLage({ onBack }) {
 }
 
 // ─── CHATTLÄGE ────────────────────────────────────────────────────────────────
-const CHATT_SYSTEM = `Du är en erfaren speciallärare och pedagogisk expert i Sverige med djup kunskap om Lgrsär22 – grundsärskolans läroplan.
-
-Du hjälper speciallärare att planera och genomföra undervisning för elever med intellektuell funktionsnedsättning (IF) på högstadienivå i grundsärskolan.
-
-Du känner till:
-- Lgrsär22 kursplaner för ämnen och ämnesområden
-- AKK (alternativ och kompletterande kommunikation) och TAKK
-- Differentiering för elever på tidig, grundläggande och utvecklad nivå
-- NPF-kombinationer vanliga vid IF (ADHD, autism, epilepsi m.fl.)
-- Praktiska strategier för lågaffektivt bemötande och tydliggörande pedagogik
-- Dokumentation, åtgärdsprogram och IUP i grundsärskolan
-
-Du svarar alltid på svenska, är konkret och praktisk. Ge korta, direkt användbara svar – som en erfaren kollega. Max 250 ord om inte läraren ber om mer.`;
-
 const CHATT_EXEMPEL = [
   "Genomgång matematik – räkna till 10, blandad grupp",
   "Tips på AKK-aktivitet för kommunikationsträning",
@@ -707,10 +693,11 @@ function ChattLage({ onBack }) {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ system: CHATT_SYSTEM, messages: newMessages.map(m => ({ role: m.role, content: m.content })) }),
+        // Systeminstruktionen ligger på servern (api/chat.js)
+        body: JSON.stringify({ messages: newMessages.map(m => ({ role: m.role, content: m.content })) }),
       });
       const data = await response.json();
-      const reply = data.content?.[0]?.text || "Något gick fel. Försök igen.";
+      const reply = data.content?.[0]?.text || data.error || "Något gick fel. Försök igen.";
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages(prev => [...prev, { role: "assistant", content: "Kunde inte ansluta. Kontrollera internetanslutningen." }]);
