@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import Markdown, { tillText } from "./Markdown.jsx";
 
 // ─── LGRSÄR22 KURSPLANKOPPLINGAR ─────────────────────────────────────────────
 const LGRSÄR22 = {
@@ -771,11 +772,11 @@ function ChattLage({ onBack }) {
                     <span style={{ color: "#81c784", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".3px" }}>SpecialGuiden</span>
                   </div>
                   <button className="sg-copy-btn"
-                    onClick={() => { navigator.clipboard.writeText(msg.content).then(() => { const btn = document.getElementById(`sgcopy-${i}`); if (btn) { btn.textContent = "✅"; setTimeout(() => btn.textContent = "📋", 2000); } }); }}
+                    onClick={() => { navigator.clipboard.writeText(tillText(msg.content)).then(() => { const btn = document.getElementById(`sgcopy-${i}`); if (btn) { btn.textContent = "✅"; setTimeout(() => btn.textContent = "📋", 2000); } }); }}
                     id={`sgcopy-${i}`}>📋</button>
                 </div>
                 <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px 18px 18px 18px", padding: ".95rem 1.15rem", fontSize: ".86rem", color: "#c8d8c8", lineHeight: 1.8, whiteSpace: "pre-wrap", boxShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
-                  {msg.content}
+                  <Markdown text={msg.content} />
                 </div>
               </div>
             )}
