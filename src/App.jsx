@@ -667,7 +667,11 @@ const CHATT_EXEMPEL = [
 ];
 
 const chattCSS = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+  @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/dm-sans-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/dm-sans-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Newsreader"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/newsreader-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Newsreader"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fonts/newsreader-latin-400-italic.woff2") format("woff2"); }
   @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
   @keyframes spin { to { transform:rotate(360deg); } }
   @keyframes sgpulse { 0%,100%{opacity:.3} 50%{opacity:1} }
@@ -723,7 +727,7 @@ function ChattLage({ onBack }) {
         <button onClick={onBack} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: ".35rem .85rem", color: "#b0d4b0", cursor: "pointer", fontFamily: "inherit", fontSize: ".78rem" }}>← Hem</button>
         <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0, boxShadow: "0 2px 12px rgba(76,175,80,0.4)" }}>♿</div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: "#81c784", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Playfair Display',serif", letterSpacing: ".3px" }}>SpecialGuiden</div>
+          <div style={{ color: "#81c784", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Newsreader',serif", letterSpacing: ".3px" }}>SpecialGuiden</div>
           <div style={{ color: "#4a7c4a", fontSize: ".68rem" }}>Chattläge · Lgrsär22 · Grundsärskolan · IF</div>
         </div>
         {messages.length > 0 && (
@@ -740,7 +744,7 @@ function ChattLage({ onBack }) {
         {messages.length === 0 && (
           <div className="sgfi" style={{ textAlign: "center", padding: "2rem .5rem" }}>
             <div style={{ width: 76, height: 76, borderRadius: "50%", background: "linear-gradient(135deg,rgba(76,175,80,0.2),rgba(46,125,50,0.1))", border: "1px solid rgba(76,175,80,0.3)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem", fontSize: "2.2rem", boxShadow: "0 4px 20px rgba(76,175,80,0.2)" }}>♿</div>
-            <h2 style={{ color: "#81c784", margin: "0 0 .5rem", fontFamily: "'Playfair Display',serif", fontSize: "1.4rem" }}>Hej! Vad behöver du?</h2>
+            <h2 style={{ color: "#81c784", margin: "0 0 .5rem", fontFamily: "'Newsreader',serif", fontSize: "1.4rem" }}>Hej! Vad behöver du?</h2>
             <p style={{ color: "#4a6a4a", fontSize: ".85rem", lineHeight: 1.7, maxWidth: 400, margin: "0 auto 2rem" }}>
               Jag hjälper dig med Lgrsär22, AKK-strategier, anpassad undervisning och lektionsplanering för elever med IF.
             </p>
@@ -817,6 +821,7 @@ function ChattLage({ onBack }) {
             ➤
           </button>
         </div>
+        <p style={{ textAlign: "center", color: "#81c784", fontSize: ".75rem", fontWeight: 600, margin: ".5rem 0 0" }}>Skriv inte in elevers namn eller andra personuppgifter.</p>
         <p style={{ textAlign: "center", color: "#2a4a2a", fontSize: ".65rem", margin: ".4rem 0 0" }}>Enter för att skicka · Shift+Enter för ny rad</p>
       </div>
     </div>
