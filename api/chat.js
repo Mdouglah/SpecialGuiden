@@ -25,7 +25,7 @@ Du svarar alltid på svenska, är konkret och praktisk. Ge korta, direkt använd
 // Gränser som hindrar att servern missbrukas
 const MAX_MESSAGES = 30;      // max antal meddelanden i en konversation
 const MAX_CHARS = 8000;       // max antal tecken per meddelande
-const MAX_TOTAL = 60000;      // max antal tecken i hela konversationen
+const MAX_TOTAL = 20000;      // max antal tecken i hela konversationen
 const MAX_TOKENS = 1024;      // tak för AI-svarets längd
 
 function tillatnaAdresser() {
