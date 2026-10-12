@@ -706,7 +706,7 @@ function ChattLage({ onBack }) {
   }
 
   return (
-    <div style={{ height: "100vh", background: "linear-gradient(135deg,#0a1628 0%,#0d2137 50%,#0a2818 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "#e0e8e0" }}>
+    <div style={{ height: "calc(100vh - 44px)", background: "linear-gradient(135deg,#0a1628 0%,#0d2137 50%,#0a2818 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "#e0e8e0" }}>
       <style>{chattCSS}</style>
 
       {/* Header */}
