@@ -29,7 +29,7 @@ const MAX_TOTAL = 20000;      // max antal tecken i hela konversationen
 const MAX_TOKENS = 1024;      // tak för AI-svarets längd
 
 function tillatnaAdresser() {
-  const lista = ["https://special-guiden.vercel.app"];
+  const lista = ["https://special-guiden.norvayapp.se", "https://special-guiden.vercel.app"];
   if (process.env.VERCEL_URL) lista.push(`https://${process.env.VERCEL_URL}`);
   if (process.env.VERCEL_BRANCH_URL) lista.push(`https://${process.env.VERCEL_BRANCH_URL}`);
   if (process.env.ALLOWED_ORIGINS) {
