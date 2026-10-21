@@ -1,68 +1,108 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" data-kategori="skola">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpecialGuiden</title>
+    <title>Specialguiden</title>
       <!-- Specialguiden -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="2e81b730-fb1d-4183-9323-de51c8949318" data-tag="specialguiden" data-do-not-track="true"></script>
     <style>
-      /* ===== Appens färger (ändra här) – steg (a): samma värden som förut ===== */
+      /* Lokala typsnitt (inga externa anrop) */
+      @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/dm-sans-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("/fonts/dm-sans-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "DM Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/dm-sans-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Newsreader"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/newsreader-latin-400-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Newsreader"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fonts/newsreader-latin-400-italic.woff2") format("woff2"); }
+      /* NORVAY_TEMA_SG ===== Norvay-tema (samma som kuratorn-allman/src/theme.css), kategori skola ===== */
       :root {
-        --sg-vit: #ffffff; /* vit */
-        --sg-text: #1a3a2a; /* huvudtext */
-        --sg-text-2: #1a2e1a; /* text i listor */
-        --sg-text-dampad: #4a7c59; /* dämpad text */
-        --sg-gron: #2e7d32; /* grön accent */
-        --sg-gron-mork: #1b5e20; /* mörkgrön */
-        --sg-gron-kant: #a5d6a7; /* grön kantlinje */
-        --sg-gron-ljus: #c8e6c9; /* ljusgrön */
-        --sg-gron-yta: #e8f5e9; /* ljusgrön yta */
-        --sg-gron-yta-2: #f1f8e9; /* ljusgrön yta 2 */
-        --sg-gron-yta-3: #f8fdf8; /* nästan vit yta */
-        --sg-turkos-yta: #e0f2f1; /* turkos yta */
-        --sg-bla: #1565c0; /* blå */
-        --sg-bla-mork: #0d47a1; /* mörkblå */
-        --sg-bla-text: #0d2a4a; /* blå text */
-        --sg-bla-yta: #e3f2fd; /* blå yta */
-        --sg-indigo: #3949ab; /* indigo */
-        --sg-lila: #6a1b9a; /* lila */
-        --sg-lila-mork: #4a148c; /* mörklila */
-        --sg-lila-ljus: #ce93d8; /* ljuslila */
-        --sg-lila-yta: #e8eaf6; /* lila yta */
-        --sg-lila-yta-2: #f3e5f5; /* lila yta 2 */
-        --sg-gra: #546e7a; /* grå */
-        --sg-gra-2: #78909c; /* grå 2 */
-        --sg-chatt-bg-1: #0a1628; /* chatt: bakgrund 1 */
-        --sg-chatt-bg-2: #0d2137; /* chatt: bakgrund 2 */
-        --sg-chatt-bg-3: #0a2818; /* chatt: bakgrund 3 */
-        --sg-chatt-accent: #81c784; /* chatt: grön accent */
-        --sg-chatt-gron: #4caf50; /* chatt: grön */
-        --sg-chatt-text: #c8d8c8; /* chatt: text */
-        --sg-chatt-text-ljus: #e0e8e0; /* chatt: ljus text */
-        --sg-chatt-text-2: #b0d4b0; /* chatt: text 2 */
-        --sg-chatt-dampad: #80a080; /* chatt: dämpad */
-        --sg-chatt-dampad-2: #4a7c4a; /* chatt: dämpad 2 */
-        --sg-chatt-dampad-3: #4a6a4a; /* chatt: dämpad 3 */
-        --sg-chatt-dampad-4: #3a5a3a; /* chatt: dämpad 4 */
-        --sg-chatt-dampad-5: #4a7a4a; /* chatt: dämpad 5 */
-        --sg-chatt-dampad-6: #3a6a3a; /* chatt: dämpad 6 */
-        --sg-chatt-dampad-7: #2a4a2a; /* chatt: dämpad 7 */
-        --sg-chattgron-a10: rgba(76,175,80,0.1);
-        --sg-chattgron-a12: rgba(76,175,80,0.12);
-        --sg-chattgron-a15: rgba(76,175,80,0.15);
-        --sg-chattgron-a20: rgba(76,175,80,0.2);
-        --sg-chattgron-a25: rgba(76,175,80,0.25);
-        --sg-chattgron-a30: rgba(76,175,80,0.3);
-        --sg-chattgron-a40: rgba(76,175,80,0.4);
-        --sg-chattgron-a50: rgba(76,175,80,0.5);
-        --sg-chattgron-a60: rgba(76,175,80,0.6);
-        --sg-gron-a07: rgba(46,125,50,.07);
-        --sg-gron-a08: rgba(46,125,50,0.08);
-        --sg-gron-a10: rgba(46,125,50,0.1);
-        --sg-gron-a15: rgba(46,125,50,0.15);
-        --sg-gronmork-a08: rgba(27,94,32,0.08);
-        --sg-gronmork-a25: rgba(27,94,32,0.25);
+        --n-bg: #f5f3ec;
+        --n-surface: #ffffff;
+        --n-ink: #123f37;
+        --n-ink-soft: #4f6b63;
+        --n-line: rgba(18, 63, 55, 0.14);
+        --n-terracotta: #c9785f;
+        --n-terracotta-soft: #dd9479;
+        --n-radius: 20px;
+        --n-radius-sm: 12px;
+        --n-font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+        --n-font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --n-accent: #2f6b5a;
+        --n-tint: #d7e2d7;
+        --n-on-accent: #ffffff;
+        --sg-font: var(--n-font-body);   /* brödtext (förut Georgia) */
+        --sg-sida: var(--n-bg);          /* sidans bakgrund (förut grön toning) */
+      }
+      [data-kategori="skola"] { --n-accent: #2f6b5a; --n-tint: #d7e2d7; }
+      body { margin: 0; background: var(--n-bg); color: var(--n-ink); font-family: var(--n-font-body); }
+      /* Rubriker i Newsreader (gäller alla vyer) */
+      #root h1, #root h2, #root h3 { font-family: var(--n-font-display) !important; font-weight: 400 !important; letter-spacing: -0.01em; }
+      #root h1 em { font-style: italic; color: #a4533c; } /* mörkare terrakotta – kontrast mot ljus bakgrund */
+      /* Startsidans sidhuvud: layout "split" med formen "quarter" */
+      .sg-hero { display: grid; grid-template-columns: 1fr 120px; gap: 20px; align-items: center; text-align: left; margin-bottom: 1.2rem; }
+      .n-motif { position: relative; width: 100%; aspect-ratio: 1; }
+      .n-motif::before, .n-motif::after { content: ""; position: absolute; }
+      .n-motif--quarter::before { inset: 10% 0 0 10%; background: var(--n-tint); border-radius: 100% 0 0 0; }
+      .n-motif--quarter::after  { width: 22%; aspect-ratio: 1; background: var(--n-accent); border-radius: 50%; left: 6%; top: 6%; }
+      @media (max-width: 420px) { .sg-hero { grid-template-columns: 1fr 84px; } }
+      :focus-visible { outline: 3px solid var(--n-accent); outline-offset: 3px; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+      /* ===== Appens färger (ändra här) – kopplade till Norvay-temat (skola) ===== */
+      :root {
+        --sg-vit: #ffffff; /* vit (kort, text på färg) */
+        --sg-text: var(--n-ink); /* huvudtext */
+        --sg-text-2: var(--n-ink); /* text i listor */
+        --sg-text-dampad: var(--n-ink-soft); /* dämpad text */
+        --sg-gron: var(--n-accent); /* grön accent */
+        --sg-gron-mork: #24564a; /* mörkgrön */
+        --sg-gron-kant: #b9cbb9; /* grön kantlinje */
+        --sg-gron-ljus: var(--n-tint); /* ljusgrön */
+        --sg-gron-yta: #e6ede5; /* ljusgrön yta */
+        --sg-gron-yta-2: var(--n-bg); /* ljusgrön yta 2 */
+        --sg-gron-yta-3: #fbfaf6; /* nästan vit yta */
+        --sg-turkos-yta: var(--n-bg); /* turkos yta */
+        --sg-bla: var(--n-accent); /* blå (Lgrsär22, kopiera) */
+        --sg-bla-mork: #1d463c; /* mörkblå */
+        --sg-bla-text: var(--n-ink); /* blå text */
+        --sg-bla-yta: #e6ede5; /* blå yta */
+        --sg-indigo: #5a4c78; /* indigo (Stöd) */
+        --sg-lila: #6f5f8f; /* lila (AKK, skriv ut) – Norvays lila */
+        --sg-lila-mork: #574a72; /* mörklila */
+        --sg-lila-ljus: #cfc6dd; /* ljuslila */
+        --sg-lila-yta: #eeebf3; /* lila yta */
+        --sg-lila-yta-2: #f3f0f7; /* lila yta 2 */
+        --sg-gra: #4f6b63; /* grå */
+        --sg-gra-2: #5d7870; /* grå 2 */
+        /* Chattläget: mörkt, i samma gröna toner som Norvays mörka läge */
+        --sg-chatt-bg-1: #0f2a24; /* chatt: bakgrund 1 */
+        --sg-chatt-bg-2: #133029; /* chatt: bakgrund 2 */
+        --sg-chatt-bg-3: #163731; /* chatt: bakgrund 3 */
+        --sg-chatt-accent: #8fc2a8; /* chatt: grön accent */
+        --sg-chatt-gron: #5e9c84; /* chatt: grön */
+        --sg-chatt-text: #e2ded2; /* chatt: text */
+        --sg-chatt-text-ljus: #ece7da; /* chatt: ljus text */
+        --sg-chatt-text-2: #c9d6cc; /* chatt: text 2 */
+        --sg-chatt-dampad: #a9bdb5; /* chatt: dämpad */
+        --sg-chatt-dampad-2: #a9bdb5; /* chatt: dämpad 2 */
+        --sg-chatt-dampad-3: #a9bdb5; /* chatt: dämpad 3 */
+        --sg-chatt-dampad-4: #a9bdb5; /* chatt: dämpad 4 */
+        --sg-chatt-dampad-5: #a9bdb5; /* chatt: dämpad 5 */
+        --sg-chatt-dampad-6: #6f8a82; /* chatt: dämpad 6 (avstängd knapp) */
+        --sg-chatt-dampad-7: #8ea79e; /* chatt: dämpad 7 */
+        --sg-chattgron-a10: rgba(143,194,168,0.1);
+        --sg-chattgron-a12: rgba(143,194,168,0.12);
+        --sg-chattgron-a15: rgba(143,194,168,0.15);
+        --sg-chattgron-a20: rgba(143,194,168,0.2);
+        --sg-chattgron-a25: rgba(143,194,168,0.25);
+        --sg-chattgron-a30: rgba(143,194,168,0.3);
+        --sg-chattgron-a40: rgba(143,194,168,0.4);
+        --sg-chattgron-a50: rgba(143,194,168,0.5);
+        --sg-chattgron-a60: rgba(143,194,168,0.6);
+        --sg-gron-a07: rgba(47,107,90,.07);
+        --sg-gron-a08: rgba(47,107,90,0.08);
+        --sg-gron-a10: rgba(47,107,90,0.1);
+        --sg-gron-a15: rgba(47,107,90,0.15);
+        --sg-gronmork-a08: rgba(18,63,55,0.06);
+        --sg-gronmork-a25: rgba(18,63,55,0.18);
         --sg-svart-a30: rgba(0,0,0,0.3);
         --sg-svart-a40: rgba(0,0,0,0.4);
         --sg-vit-a02: rgba(255,255,255,0.02);

@@ -59,7 +59,7 @@ const AMNEN = {
 
 // ─── KONSTANTER ───────────────────────────────────────────────────────────────
 const NIVA_LABELS = ["Tidig utvecklingsnivå", "Grundläggande", "Utvecklad"];
-const NIVA_FARG = ["#6a1b9a", "#1565c0", "#2e7d32"];
+const NIVA_FARG = ["#6f5f8f", "#a4533c", "#2f6b5a"]; // Norvays lila, terrakotta och gröna (kontrast minst 4,5:1)
 const NIVA_IKONER = ["🌱", "🌿", "🌳"];
 
 const NIVA_BESKRIVNING = {
@@ -176,7 +176,7 @@ function NPFKort({ profiles, chapter }) {
       <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".9rem", paddingBottom: ".7rem", borderBottom: "1px solid var(--sg-lila-yta)" }}>
         <span style={{ fontSize: "1.2rem" }}>🧩</span>
         <div>
-          <div style={{ fontFamily: "Georgia,serif", fontWeight: 700, color: "var(--sg-text)", fontSize: ".95rem" }}>NPF-anpassningar</div>
+          <div style={{ fontFamily: "var(--sg-font)", fontWeight: 700, color: "var(--sg-text)", fontSize: ".95rem" }}>NPF-anpassningar</div>
           <div style={{ fontSize: ".72rem", color: "var(--sg-text-dampad)" }}>{chapter} · {aktiva.length} {aktiva.length === 1 ? "profil" : "profiler"} valda</div>
         </div>
       </div>
@@ -278,7 +278,7 @@ function ResurserKort({ amne, kapitel }) {
   const totalLinks = resurser.reduce((s, r) => s + r.links.length, 0);
   return (
     <div style={{ background: "var(--sg-vit)", borderRadius: 10, marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)", overflow: "hidden" }}>
-      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: ".85rem .9rem", background: "none", border: "none", cursor: "pointer", fontFamily: "Georgia,serif", textAlign: "left" }}>
+      <button onClick={() => setOpen(o => !o)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: ".85rem .9rem", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--sg-font)", textAlign: "left" }}>
         <span style={{ display: "flex", alignItems: "center", gap: ".5rem", fontWeight: 700, color: "var(--sg-text)", fontSize: ".85rem" }}>
           🔍 Visa resurser
           <span style={{ background: "var(--sg-gron-yta)", borderRadius: 50, padding: ".1rem .55rem", fontSize: ".7rem", color: "var(--sg-gron)", fontWeight: 700 }}>{totalLinks} länkar</span>
@@ -373,7 +373,7 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
           <span style={{ background: "var(--sg-vit-a18)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem" }}>{l.meta.amne}</span>
           <span style={{ background: "var(--sg-vit-a22)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem", fontWeight: 700 }}>Lgrsär22</span>
         </div>
-        <h2 style={{ margin: "0 0 .35rem", fontSize: "1.15rem", fontFamily: "Georgia,serif" }}>{l.meta.kapitel}</h2>
+        <h2 style={{ margin: "0 0 .35rem", fontSize: "1.15rem", fontFamily: "var(--sg-font)" }}>{l.meta.kapitel}</h2>
         <p style={{ margin: 0, fontSize: ".78rem", opacity: .85, lineHeight: 1.5 }}>{l.lgrsarKort}</p>
       </div>
 
@@ -413,7 +413,7 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
         <div style={{ display: "flex", gap: ".35rem", flexWrap: "wrap", marginBottom: ".6rem" }}>
           {l.steg.map((s, i) => (
             <button key={i} onClick={() => setAktivSteg(aktivSteg === i ? null : i)}
-              style={{ border: "none", borderRadius: 50, padding: ".3rem .75rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".73rem", fontWeight: 700, background: aktivSteg === i ? s.farg : "var(--sg-gron-yta-2)", color: aktivSteg === i ? "var(--sg-vit)" : s.farg }}>
+              style={{ border: "none", borderRadius: 50, padding: ".3rem .75rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".73rem", fontWeight: 700, background: aktivSteg === i ? s.farg : "var(--sg-gron-yta-2)", color: aktivSteg === i ? "var(--sg-vit)" : s.farg }}>
               {s.ikon} {s.niva}
             </button>
           ))}
@@ -452,8 +452,8 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
 
       {/* Knappar */}
       <div style={{ display: "flex", gap: ".45rem", flexWrap: "wrap" }}>
-        <button onClick={() => onKopiera(exportText())} style={{ background: "linear-gradient(135deg,var(--sg-bla),var(--sg-bla-mork))", color: "var(--sg-vit)", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "Georgia,serif", fontWeight: 700, cursor: "pointer" }}>{kopieradT ? "✅ Kopierat!" : "📋 Kopiera"}</button>
-        <button onClick={onPrint} style={{ background: "linear-gradient(135deg,var(--sg-lila),var(--sg-lila-mork))", color: "var(--sg-vit)", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "Georgia,serif", fontWeight: 700, cursor: "pointer" }}>🖨️ Skriv ut</button>
+        <button onClick={() => onKopiera(exportText())} style={{ background: "linear-gradient(135deg,var(--sg-bla),var(--sg-bla-mork))", color: "var(--sg-vit)", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "var(--sg-font)", fontWeight: 700, cursor: "pointer" }}>{kopieradT ? "✅ Kopierat!" : "📋 Kopiera"}</button>
+        <button onClick={onPrint} style={{ background: "linear-gradient(135deg,var(--sg-lila),var(--sg-lila-mork))", color: "var(--sg-vit)", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "var(--sg-font)", fontWeight: 700, cursor: "pointer" }}>🖨️ Skriv ut</button>
       </div>
     </div>
   );
@@ -498,12 +498,12 @@ function GuidatLage({ onBack }) {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,var(--sg-gron-yta),var(--sg-gron-yta-2),var(--sg-turkos-yta))", fontFamily: "Georgia,serif", padding: "1rem" }}>
+    <div style={{ minHeight: "100vh", background: "var(--sg-sida)", fontFamily: "var(--sg-font)", padding: "1rem" }}>
       <style>{`
-        .cbtn{transition:all .18s;border:2px solid var(--sg-gron-kant);background:var(--sg-vit);border-radius:10px;padding:.55rem .8rem;cursor:pointer;font-family:Georgia,serif;font-size:.83rem;color:var(--sg-text);text-align:left;width:100%}
+        .cbtn{transition:all .18s;border:2px solid var(--sg-gron-kant);background:var(--sg-vit);border-radius:10px;padding:.55rem .8rem;cursor:pointer;font-family:var(--sg-font);font-size:.83rem;color:var(--sg-text);text-align:left;width:100%}
         .cbtn:hover{border-color:var(--sg-gron);background:var(--sg-gron-yta-2)}
         .cbtn.on{border-color:var(--sg-gron);background:var(--sg-gron-yta);font-weight:700}
-        .gbtn{background:linear-gradient(135deg,var(--sg-gron),var(--sg-gron-mork));color:var(--sg-vit);border:none;border-radius:50px;padding:.75rem 1.8rem;font-size:.9rem;font-family:Georgia,serif;font-weight:700;cursor:pointer}
+        .gbtn{background:linear-gradient(135deg,var(--sg-gron),var(--sg-gron-mork));color:var(--sg-vit);border:none;border-radius:50px;padding:.75rem 1.8rem;font-size:.9rem;font-family:var(--sg-font);font-weight:700;cursor:pointer}
         .gbtn.sec{background:linear-gradient(135deg,var(--sg-gra-2),var(--sg-gra))}
         .npf-pill{transition:all .18s;display:flex;align-items:center;gap:.6rem;border-radius:12px;padding:.65rem .9rem;cursor:pointer;border:2px solid transparent}
         ul{padding-left:1.2rem;margin:.3rem 0}
@@ -513,10 +513,10 @@ function GuidatLage({ onBack }) {
       `}</style>
       <div style={{ maxWidth: 660, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: ".7rem", marginBottom: "1.2rem" }}>
-          <button onClick={onBack} style={{ background: "var(--sg-gron)", color: "var(--sg-vit)", border: "none", borderRadius: 8, padding: ".4rem .85rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".8rem" }}>← Hem</button>
+          <button onClick={onBack} style={{ background: "var(--sg-gron)", color: "var(--sg-vit)", border: "none", borderRadius: 8, padding: ".4rem .85rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".8rem" }}>← Hem</button>
           <span style={{ fontSize: "1.5rem" }}>♿</span>
           <div>
-            <div style={{ color: "var(--sg-gron-mork)", fontWeight: 700, fontSize: ".95rem" }}>SpecialGuiden</div>
+            <div style={{ color: "var(--sg-gron-mork)", fontWeight: 700, fontSize: ".95rem" }}>Specialguiden</div>
             <div style={{ color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>Guidat läge · Lgrsär22 · Grundsärskolan</div>
           </div>
         </div>
@@ -548,7 +548,7 @@ function GuidatLage({ onBack }) {
               })}
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: ".5rem", flexWrap: "wrap" }}>
-              <button onClick={() => { setNpfProfiler([]); genereraLektion(0, []); }} style={{ background: "none", border: "2px solid var(--sg-gron-ljus)", borderRadius: 50, padding: ".6rem 1.3rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".83rem", color: "var(--sg-text-dampad)" }}>Hoppa över</button>
+              <button onClick={() => { setNpfProfiler([]); genereraLektion(0, []); }} style={{ background: "none", border: "2px solid var(--sg-gron-ljus)", borderRadius: 50, padding: ".6rem 1.3rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".83rem", color: "var(--sg-text-dampad)" }}>Hoppa över</button>
               <button className="gbtn" onClick={() => genereraLektion(0, npfProfiler)}>
                 {npfProfiler.length > 0 ? `✨ Skapa med ${npfProfiler.length} tilläggsprofil${npfProfiler.length > 1 ? "er" : ""}` : "✨ Skapa genomgång"}
               </button>
@@ -594,11 +594,11 @@ function GuidatLage({ onBack }) {
                 <div style={{ display: "grid", gap: ".35rem", maxHeight: 240, overflowY: "auto", paddingRight: 4, marginBottom: ".7rem" }}>
                   {kapitel_lista.map(c => <button key={c} className={`cbtn${kapitel === c && !anvandEget ? " on" : ""}`} onClick={() => { setKapitel(c); setEgetKapitel(""); }}>📖 {c}</button>)}
                 </div>
-                <button onClick={() => { setAnvandEget(true); setKapitel(null); }} style={{ background: "none", border: "2px dashed var(--sg-gron-kant)", borderRadius: 10, padding: ".6rem 1rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".85rem", color: "var(--sg-text-dampad)", width: "100%", textAlign: "center" }}>✏️ Skriv in eget moment</button>
+                <button onClick={() => { setAnvandEget(true); setKapitel(null); }} style={{ background: "none", border: "2px dashed var(--sg-gron-kant)", borderRadius: 10, padding: ".6rem 1rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".85rem", color: "var(--sg-text-dampad)", width: "100%", textAlign: "center" }}>✏️ Skriv in eget moment</button>
               </>}
               {anvandEget && <div style={{ marginTop: ".5rem" }}>
-                <input placeholder="T.ex. 'Tvätta händer med stöd' eller 'Räkna pengar i affären'" value={egetKapitel} onChange={e => setEgetKapitel(e.target.value)} autoFocus style={{ width: "100%", padding: ".8rem 1rem", border: "2px solid var(--sg-gron-kant)", borderRadius: 10, fontFamily: "Georgia,serif", fontSize: ".88rem", outline: "none", boxSizing: "border-box", marginBottom: ".5rem" }} />
-                <button onClick={() => { setAnvandEget(false); setEgetKapitel(""); }} style={{ background: "none", border: "2px dashed var(--sg-gron-kant)", borderRadius: 10, padding: ".5rem 1rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".83rem", color: "var(--sg-text-dampad)" }}>← Tillbaka till listan</button>
+                <input placeholder="T.ex. 'Tvätta händer med stöd' eller 'Räkna pengar i affären'" value={egetKapitel} onChange={e => setEgetKapitel(e.target.value)} autoFocus style={{ width: "100%", padding: ".8rem 1rem", border: "2px solid var(--sg-gron-kant)", borderRadius: 10, fontFamily: "var(--sg-font)", fontSize: ".88rem", outline: "none", boxSizing: "border-box", marginBottom: ".5rem" }} />
+                <button onClick={() => { setAnvandEget(false); setEgetKapitel(""); }} style={{ background: "none", border: "2px dashed var(--sg-gron-kant)", borderRadius: 10, padding: ".5rem 1rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".83rem", color: "var(--sg-text-dampad)" }}>← Tillbaka till listan</button>
               </div>}
             </>}
 
@@ -714,7 +714,7 @@ function ChattLage({ onBack }) {
         <button onClick={onBack} style={{ background: "var(--sg-vit-a08)", border: "1px solid var(--sg-vit-a15)", borderRadius: 8, padding: ".35rem .85rem", color: "var(--sg-chatt-text-2)", cursor: "pointer", fontFamily: "inherit", fontSize: ".78rem" }}>← Hem</button>
         <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0, boxShadow: "0 2px 12px var(--sg-chattgron-a40)" }}>♿</div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: "var(--sg-chatt-accent)", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Newsreader',serif", letterSpacing: ".3px" }}>SpecialGuiden</div>
+          <div style={{ color: "var(--sg-chatt-accent)", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Newsreader',serif", letterSpacing: ".3px" }}>Specialguiden</div>
           <div style={{ color: "var(--sg-chatt-dampad-2)", fontSize: ".68rem" }}>Chattläge · Lgrsär22 · Grundsärskolan · IF</div>
         </div>
         {messages.length > 0 && (
@@ -760,7 +760,7 @@ function ChattLage({ onBack }) {
                 <div style={{ display: "flex", alignItems: "center", gap: ".45rem", marginBottom: ".35rem", justifyContent: "space-between" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: ".45rem" }}>
                     <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0 }}>♿</div>
-                    <span style={{ color: "var(--sg-chatt-accent)", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".3px" }}>SpecialGuiden</span>
+                    <span style={{ color: "var(--sg-chatt-accent)", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".3px" }}>Specialguiden</span>
                   </div>
                   <button className="sg-copy-btn"
                     onClick={() => { navigator.clipboard.writeText(tillText(msg.content)).then(() => { const btn = document.getElementById(`sgcopy-${i}`); if (btn) { btn.textContent = "✅"; setTimeout(() => btn.textContent = "📋", 2000); } }); }}
@@ -822,23 +822,29 @@ export default function SpecialGuiden() {
   if (mode === "guide") return <GuidatLage onBack={() => { setMode(null); window.scrollTo(0, 0); }} />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,var(--sg-gron-yta),var(--sg-gron-yta-2),var(--sg-turkos-yta))", fontFamily: "Georgia,serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
+    <div style={{ minHeight: "100vh", background: "var(--sg-sida)", fontFamily: "var(--sg-font)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
       <style>{`@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.fi{animation:fi .4s ease}`}</style>
       <div className="fi" style={{ textAlign: "center", maxWidth: 480, width: "100%" }}>
-        <span style={{ fontSize: "2.8rem" }}>♿</span>
-        <h1 style={{ fontSize: "1.9rem", color: "var(--sg-gron-mork)", margin: ".4rem 0 .2rem", fontWeight: 700, fontFamily: "Georgia,serif" }}>SpecialGuiden</h1>
-        <p style={{ color: "var(--sg-text-dampad)", marginBottom: ".5rem", fontSize: ".88rem" }}>Anpassad undervisning · Lgrsär22 · Grundsärskolan</p>
+        {/* Norvay-tema: layout "split" med formen "quarter" */}
+        <div className="sg-hero">
+          <div>
+            <span style={{ fontSize: "2rem" }}>♿</span>
+            <h1 style={{ fontSize: "clamp(2.2rem,8vw,3rem)", color: "var(--sg-text)", margin: ".2rem 0 .3rem", lineHeight: 1.05 }}>Special<em>guiden</em></h1>
+            <p style={{ color: "var(--sg-text-dampad)", margin: 0, fontSize: ".92rem" }}>Anpassad undervisning · Lgrsär22 · Grundsärskolan</p>
+          </div>
+          <div className="n-motif n-motif--quarter" aria-hidden="true"></div>
+        </div>
         <p style={{ color: "var(--sg-gron)", fontSize: ".8rem", background: "var(--sg-gron-yta)", border: "1px solid var(--sg-gron-ljus)", borderRadius: 20, padding: "4px 14px", display: "inline-block", marginBottom: "2rem", fontWeight: 600 }}>
           Elever med IF · Högstadiet · AKK & bildstöd
         </p>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
-          <button onClick={() => setMode("chat")} style={{ background: "linear-gradient(135deg,var(--sg-gron-mork),var(--sg-gron))", color: "var(--sg-vit)", border: "none", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "Georgia,serif", boxShadow: "0 4px 20px var(--sg-gronmork-a25)" }}>
+          <button onClick={() => setMode("chat")} style={{ background: "linear-gradient(135deg,var(--sg-gron-mork),var(--sg-gron))", color: "var(--sg-vit)", border: "none", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "var(--sg-font)", boxShadow: "0 4px 20px var(--sg-gronmork-a25)" }}>
             <div style={{ fontSize: "1.7rem", marginBottom: ".35rem" }}>💬</div>
             <div style={{ fontSize: ".95rem", fontWeight: 700, marginBottom: ".2rem" }}>Chattläge</div>
             <div style={{ fontSize: ".72rem", opacity: .88 }}>Beskriv fritt – få råd och genomgångar direkt</div>
           </button>
-          <button onClick={() => setMode("guide")} style={{ background: "var(--sg-vit)", color: "var(--sg-gron-mork)", border: "2px solid var(--sg-gron-kant)", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "Georgia,serif", boxShadow: "0 4px 20px var(--sg-gronmork-a08)" }}>
+          <button onClick={() => setMode("guide")} style={{ background: "var(--sg-vit)", color: "var(--sg-gron-mork)", border: "2px solid var(--sg-gron-kant)", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "var(--sg-font)", boxShadow: "0 4px 20px var(--sg-gronmork-a08)" }}>
             <div style={{ fontSize: "1.7rem", marginBottom: ".35rem" }}>📋</div>
             <div style={{ fontSize: ".95rem", fontWeight: 700, marginBottom: ".2rem" }}>Guidat läge</div>
             <div style={{ fontSize: ".72rem", color: "var(--sg-text-dampad)" }}>Välj ämne, moment och nivåer steg för steg</div>
@@ -846,7 +852,7 @@ export default function SpecialGuiden() {
         </div>
 
         <div style={{ background: "var(--sg-vit)", borderRadius: 12, padding: ".9rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: ".8rem", textAlign: "left" }}>
-          <p style={{ margin: "0 0 .4rem", color: "var(--sg-gron)", fontSize: ".78rem", fontWeight: 700 }}>🌟 Vad SpecialGuiden ger dig:</p>
+          <p style={{ margin: "0 0 .4rem", color: "var(--sg-gron)", fontSize: ".78rem", fontWeight: 700 }}>🌟 Vad Specialguiden ger dig:</p>
           <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
             {["Genomgångar anpassade till Lgrsär22", "Tre nivåer: Tidig, Grundläggande, Utvecklad", "AKK-tips och bildstödstrategier", "NPF-anpassningskort (ADHD, autism, epilepsi m.fl.)", "Resurser från SPSM, Widgit och Dart"].map((item, i) => (
               <li key={i} style={{ fontSize: ".78rem", color: "var(--sg-text)", marginBottom: ".2rem", lineHeight: 1.5 }}>{item}</li>
@@ -859,7 +865,7 @@ export default function SpecialGuiden() {
           <p style={{ margin: ".2rem 0 0", color: "var(--sg-text-dampad)", fontSize: ".75rem" }}>"Hygien tre nivåer" · "AKK kommunikationsträning" · "Räkna pengar vardagsaktivitet"</p>
         </div>
 
-        <p style={{ color: "var(--sg-gron-kant)", fontSize: ".7rem" }}>av MD · Grundsärskolan · Lgrsär22</p>
+        <p style={{ color: "var(--sg-text-dampad)", fontSize: ".7rem" }}>av MD · Grundsärskolan · Lgrsär22</p>
       </div>
     </div>
   );
