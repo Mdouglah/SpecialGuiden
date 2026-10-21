@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { NorvayFooter } from "./NorvayBar.jsx";
 import Markdown, { tillText } from "./Markdown.jsx";
 
 // ─── LGRSÄR22 KURSPLANKOPPLINGAR ─────────────────────────────────────────────
@@ -172,7 +173,7 @@ function NPFKort({ profiles, chapter }) {
   const aktiva = NPF_PROFILER.filter(p => profiles.includes(p.id));
   if (aktiva.length === 0) return null;
   return (
-    <div style={{ background: "var(--sg-vit)", borderRadius: 14, padding: "1.1rem", boxShadow: "0 2px 12px var(--sg-gron-a08)", marginBottom: ".7rem", border: "2px solid var(--sg-lila-yta)" }}>
+    <div style={{ background: "var(--sg-kort)", borderRadius: 14, padding: "1.1rem", boxShadow: "0 2px 12px var(--sg-gron-a08)", marginBottom: ".7rem", border: "2px solid var(--sg-lila-yta)" }}>
       <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".9rem", paddingBottom: ".7rem", borderBottom: "1px solid var(--sg-lila-yta)" }}>
         <span style={{ fontSize: "1.2rem" }}>🧩</span>
         <div>
@@ -277,27 +278,27 @@ function ResurserKort({ amne, kapitel }) {
   const resurser = buildResurser(amne, kapitel);
   const totalLinks = resurser.reduce((s, r) => s + r.links.length, 0);
   return (
-    <div style={{ background: "var(--sg-vit)", borderRadius: 10, marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)", overflow: "hidden" }}>
+    <div style={{ background: "var(--sg-kort)", borderRadius: 10, marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)", overflow: "hidden" }}>
       <button onClick={() => setOpen(o => !o)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: ".85rem .9rem", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--sg-font)", textAlign: "left" }}>
         <span style={{ display: "flex", alignItems: "center", gap: ".5rem", fontWeight: 700, color: "var(--sg-text)", fontSize: ".85rem" }}>
           🔍 Visa resurser
-          <span style={{ background: "var(--sg-gron-yta)", borderRadius: 50, padding: ".1rem .55rem", fontSize: ".7rem", color: "var(--sg-gron)", fontWeight: 700 }}>{totalLinks} länkar</span>
+          <span style={{ background: "var(--sg-gron-yta)", borderRadius: 50, padding: ".1rem .55rem", fontSize: ".7rem", color: "var(--sg-t-gron)", fontWeight: 700 }}>{totalLinks} länkar</span>
         </span>
-        <span style={{ color: "var(--sg-gron)", fontSize: "1rem", transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▾</span>
+        <span style={{ color: "var(--sg-t-gron)", fontSize: "1rem", transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▾</span>
       </button>
       {open && (
         <div style={{ borderTop: "1px solid var(--sg-gron-yta-2)", padding: ".85rem .9rem" }}>
           <p style={{ margin: "0 0 .8rem", fontSize: ".75rem", color: "var(--sg-text-dampad)", fontStyle: "italic" }}>Länkar öppnas i ny flik. Kontrollera att materialet passar eleven.</p>
           {resurser.map((kategori, ki) => (
             <div key={ki} style={{ marginBottom: ki < resurser.length - 1 ? ".85rem" : 0 }}>
-              <div style={{ fontSize: ".75rem", fontWeight: 700, color: "var(--sg-gron)", marginBottom: ".35rem" }}>{kategori.kategori}</div>
+              <div style={{ fontSize: ".75rem", fontWeight: 700, color: "var(--sg-t-gron)", marginBottom: ".35rem" }}>{kategori.kategori}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: ".3rem" }}>
                 {kategori.links.map((link, li) => (
                   <a key={li} href={link.url} target="_blank" rel="noopener noreferrer"
                     style={{ display: "flex", alignItems: "center", gap: ".4rem", background: "var(--sg-gron-yta-3)", border: "1px solid var(--sg-gron-ljus)", borderRadius: 8, padding: ".4rem .7rem", textDecoration: "none", color: "var(--sg-text)", fontSize: ".78rem", transition: "all .15s" }}
                     onMouseEnter={e => { e.currentTarget.style.background = "var(--sg-gron-yta)"; e.currentTarget.style.borderColor = "var(--sg-gron)"; }}
                     onMouseLeave={e => { e.currentTarget.style.background = "var(--sg-gron-yta-3)"; e.currentTarget.style.borderColor = "var(--sg-gron-ljus)"; }}>
-                    <span style={{ color: "var(--sg-gron)", fontSize: ".8rem" }}>↗</span>
+                    <span style={{ color: "var(--sg-t-gron)", fontSize: ".8rem" }}>↗</span>
                     {link.label}
                   </a>
                 ))}
@@ -379,15 +380,15 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
 
       {/* Lgrsär22 */}
       <div style={{ background: "var(--sg-bla-yta)", borderRadius: 12, padding: "1rem 1.1rem", marginBottom: ".7rem", borderLeft: "4px solid var(--sg-bla)" }}>
-        <p style={{ margin: "0 0 .25rem", color: "var(--sg-bla)", fontWeight: 700, fontSize: ".78rem" }}>📌 Koppling till Lgrsär22</p>
+        <p style={{ margin: "0 0 .25rem", color: "var(--sg-t-bla)", fontWeight: 700, fontSize: ".78rem" }}>📌 Koppling till Lgrsär22</p>
         <p style={{ margin: 0, color: "var(--sg-bla-text)", fontSize: ".82rem", lineHeight: 1.6, fontStyle: "italic" }}>{l.lgrsarCitat}</p>
       </div>
 
       {/* Statistik */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: ".45rem", marginBottom: ".65rem" }}>
         {[["Nivåer", l.meta.nivaer.length], ["Moment", l.steg.length], ["Lgrsär22", "✓"]].map(([lb, v]) => (
-          <div key={lb} style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".6rem", textAlign: "center", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
-            <div style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--sg-gron)" }}>{v}</div>
+          <div key={lb} style={{ background: "var(--sg-kort)", borderRadius: 10, padding: ".6rem", textAlign: "center", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+            <div style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--sg-t-gron)" }}>{v}</div>
             <div style={{ fontSize: ".68rem", color: "var(--sg-text-dampad)" }}>{lb}</div>
           </div>
         ))}
@@ -395,40 +396,40 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
 
       {/* AKK-tips */}
       <div style={{ background: "var(--sg-lila-yta-2)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", border: "1px solid var(--sg-lila-ljus)" }}>
-        <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-lila)", fontSize: ".85rem" }}>💬 AKK & kommunikationsstöd</h4>
+        <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-t-lila)", fontSize: ".85rem" }}>💬 AKK & kommunikationsstöd</h4>
         <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>
           {l.akkTips.map((t, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".2rem", color: "var(--sg-text-2)" }}>{t}</li>)}
         </ul>
       </div>
 
       {/* Förberedelse */}
-      <div style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+      <div style={{ background: "var(--sg-kort)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
         <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-text)", fontSize: ".85rem" }}>📋 Förberedelse <span style={{ fontWeight: 400, color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>(5 min)</span></h4>
         <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.forberedelse.map((p, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".2rem", color: "var(--sg-text-2)" }}>{p}</li>)}</ul>
       </div>
 
       {/* Genomgång per nivå */}
-      <div style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+      <div style={{ background: "var(--sg-kort)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
         <h4 style={{ margin: "0 0 .6rem", color: "var(--sg-text)", fontSize: ".85rem" }}>📈 Genomgång per nivå</h4>
         <div style={{ display: "flex", gap: ".35rem", flexWrap: "wrap", marginBottom: ".6rem" }}>
           {l.steg.map((s, i) => (
             <button key={i} onClick={() => setAktivSteg(aktivSteg === i ? null : i)}
-              style={{ border: "none", borderRadius: 50, padding: ".3rem .75rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".73rem", fontWeight: 700, background: aktivSteg === i ? s.farg : "var(--sg-gron-yta-2)", color: aktivSteg === i ? "var(--sg-vit)" : s.farg }}>
+              style={{ border: "none", borderRadius: 50, padding: ".3rem .75rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".73rem", fontWeight: 700, background: aktivSteg === i ? s.farg : "var(--sg-gron-yta-2)", color: aktivSteg === i ? "var(--sg-vit)" : `color-mix(in srgb, ${s.farg} var(--sg-niva-andel), #ece7da)` }}>
               {s.ikon} {s.niva}
             </button>
           ))}
         </div>
         {l.steg.map((s, i) => (
           <div key={i} style={{ display: aktivSteg === i || aktivSteg === null ? "block" : "none", borderLeft: `4px solid ${s.farg}`, paddingLeft: ".8rem", marginBottom: aktivSteg === null ? ".9rem" : 0 }}>
-            <strong style={{ color: s.farg, fontSize: ".82rem" }}>{s.ikon} {s.niva}</strong>
+            <strong style={{ color: `color-mix(in srgb, ${s.farg} var(--sg-niva-andel), #ece7da)`, fontSize: ".82rem" }}>{s.ikon} {s.niva}</strong>
             <div style={{ fontSize: ".73rem", color: "var(--sg-text-dampad)", fontStyle: "italic", margin: ".2rem 0 .35rem" }}>{NIVA_BESKRIVNING[s.niva]}</div>
             <ul style={{ margin: "0 0 .45rem", paddingLeft: "1.1rem" }}>{s.moment.map((m, j) => <li key={j} style={{ fontSize: ".78rem", marginBottom: ".18rem", color: "var(--sg-text-2)" }}>{m}</li>)}</ul>
             <div style={{ background: "var(--sg-gron-yta-2)", borderRadius: 7, padding: ".35rem .65rem", marginBottom: ".28rem" }}>
-              <span style={{ fontSize: ".68rem", color: "var(--sg-gron)", fontWeight: 700 }}>❓ </span>
+              <span style={{ fontSize: ".68rem", color: "var(--sg-t-gron)", fontWeight: 700 }}>❓ </span>
               <span style={{ fontSize: ".76rem", color: "var(--sg-text-2)", fontStyle: "italic" }}>{s.fraga}</span>
             </div>
             <div style={{ background: "var(--sg-lila-yta)", borderRadius: 7, padding: ".35rem .65rem" }}>
-              <span style={{ fontSize: ".68rem", color: "var(--sg-indigo)", fontWeight: 700 }}>🤝 Stöd: </span>
+              <span style={{ fontSize: ".68rem", color: "var(--sg-t-indigo)", fontWeight: 700 }}>🤝 Stöd: </span>
               <span style={{ fontSize: ".76rem", color: "var(--sg-text-2)" }}>{s.stod}</span>
             </div>
           </div>
@@ -436,7 +437,7 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
       </div>
 
       {/* Avslutning */}
-      <div style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+      <div style={{ background: "var(--sg-kort)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
         <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-text)", fontSize: ".85rem" }}>🔄 Avslutning <span style={{ fontWeight: 400, color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>(5 min)</span></h4>
         <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.avslutning.map((p, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".18rem", color: "var(--sg-text-2)" }}>{p}</li>)}</ul>
       </div>
@@ -500,7 +501,7 @@ function GuidatLage({ onBack }) {
   return (
     <div style={{ minHeight: "100vh", background: "var(--sg-sida)", fontFamily: "var(--sg-font)", padding: "1rem" }}>
       <style>{`
-        .cbtn{transition:all .18s;border:2px solid var(--sg-gron-kant);background:var(--sg-vit);border-radius:10px;padding:.55rem .8rem;cursor:pointer;font-family:var(--sg-font);font-size:.83rem;color:var(--sg-text);text-align:left;width:100%}
+        .cbtn{transition:all .18s;border:2px solid var(--sg-gron-kant);background:var(--sg-kort);border-radius:10px;padding:.55rem .8rem;cursor:pointer;font-family:var(--sg-font);font-size:.83rem;color:var(--sg-text);text-align:left;width:100%}
         .cbtn:hover{border-color:var(--sg-gron);background:var(--sg-gron-yta-2)}
         .cbtn.on{border-color:var(--sg-gron);background:var(--sg-gron-yta);font-weight:700}
         .gbtn{background:linear-gradient(135deg,var(--sg-gron),var(--sg-gron-mork));color:var(--sg-vit);border:none;border-radius:50px;padding:.75rem 1.8rem;font-size:.9rem;font-family:var(--sg-font);font-weight:700;cursor:pointer}
@@ -516,14 +517,14 @@ function GuidatLage({ onBack }) {
           <button onClick={onBack} style={{ background: "var(--sg-gron)", color: "var(--sg-vit)", border: "none", borderRadius: 8, padding: ".4rem .85rem", cursor: "pointer", fontFamily: "var(--sg-font)", fontSize: ".8rem" }}>← Hem</button>
           <span style={{ fontSize: "1.5rem" }}>♿</span>
           <div>
-            <div style={{ color: "var(--sg-gron-mork)", fontWeight: 700, fontSize: ".95rem" }}>Specialguiden</div>
+            <div style={{ color: "var(--sg-t-gron-mork)", fontWeight: 700, fontSize: ".95rem" }}>Specialguiden</div>
             <div style={{ color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>Guidat läge · Lgrsär22 · Grundsärskolan</div>
           </div>
         </div>
 
         {/* NPF-STEG */}
         {!lektion && npfSteg && (
-          <div className="fi" style={{ background: "var(--sg-vit)", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px var(--sg-gron-a08)" }}>
+          <div className="fi" style={{ background: "var(--sg-kort)", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px var(--sg-gron-a08)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".3rem" }}>
               <span style={{ fontSize: "1.3rem" }}>🧩</span>
               <h2 style={{ color: "var(--sg-text)", margin: 0, fontSize: "1.1rem" }}>Ytterligare diagnoser?</h2>
@@ -536,7 +537,7 @@ function GuidatLage({ onBack }) {
                 const vald = npfProfiler.includes(profil.id);
                 return (
                   <div key={profil.id} className="npf-pill" onClick={() => toggleNpf(profil.id)}
-                    style={{ background: vald ? profil.bgFarg : "var(--sg-vit)", border: `2px solid ${vald ? profil.farg : "var(--sg-gron-kant)"}` }}>
+                    style={{ background: vald ? profil.bgFarg : "var(--sg-kort)", border: `2px solid ${vald ? profil.farg : "var(--sg-gron-kant)"}` }}>
                     <div style={{ width: 30, height: 30, borderRadius: "50%", background: profil.farg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>{profil.emoji}</div>
                     <div>
                       <div style={{ fontSize: ".82rem", fontWeight: 700, color: vald ? profil.textFarg : "var(--sg-text)" }}>{profil.label}</div>
@@ -558,7 +559,7 @@ function GuidatLage({ onBack }) {
 
         {/* VÄLJ-FORMULÄR */}
         {!lektion && !npfSteg && (
-          <div className="fi" style={{ background: "var(--sg-vit)", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px var(--sg-gron-a08)" }}>
+          <div className="fi" style={{ background: "var(--sg-kort)", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px var(--sg-gron-a08)" }}>
 
             {/* Ämnesgrupp */}
             <h2 style={{ color: "var(--sg-text)", marginTop: 0, fontSize: "1.1rem" }}>Välj ämnesgrupp</h2>
@@ -608,13 +609,13 @@ function GuidatLage({ onBack }) {
               <p style={{ color: "var(--sg-text-dampad)", fontSize: ".83rem", marginBottom: ".8rem" }}>Välj de nivåer som finns i gruppen.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: ".55rem", marginBottom: "1.2rem" }}>
                 {NIVA_LABELS.map((n, i) => (
-                  <div key={n} onClick={() => toggleNiva(n)} style={{ border: `2px solid ${valdaNivaer.includes(n) ? NIVA_FARG[i] : "var(--sg-gron-kant)"}`, background: valdaNivaer.includes(n) ? "var(--sg-gron-yta-2)" : "var(--sg-vit)", borderRadius: 10, padding: ".7rem 1rem", cursor: "pointer", display: "flex", alignItems: "center", gap: ".8rem" }}>
+                  <div key={n} onClick={() => toggleNiva(n)} style={{ border: `2px solid ${valdaNivaer.includes(n) ? NIVA_FARG[i] : "var(--sg-gron-kant)"}`, background: valdaNivaer.includes(n) ? "var(--sg-gron-yta-2)" : "var(--sg-kort)", borderRadius: 10, padding: ".7rem 1rem", cursor: "pointer", display: "flex", alignItems: "center", gap: ".8rem" }}>
                     <span style={{ fontSize: "1.1rem" }}>{NIVA_IKONER[i]}</span>
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: ".88rem", color: NIVA_FARG[i] }}>{n}</div>
+                      <div style={{ fontWeight: 700, fontSize: ".88rem", color: `color-mix(in srgb, ${NIVA_FARG[i]} var(--sg-niva-andel), #ece7da)` }}>{n}</div>
                       <div style={{ fontSize: ".73rem", color: "var(--sg-text-dampad)" }}>{NIVA_BESKRIVNING[n].slice(0, 60)}...</div>
                     </div>
-                    {valdaNivaer.includes(n) && <span style={{ marginLeft: "auto", color: NIVA_FARG[i], fontSize: "1.1rem" }}>✓</span>}
+                    {valdaNivaer.includes(n) && <span style={{ marginLeft: "auto", color: `color-mix(in srgb, ${NIVA_FARG[i]} var(--sg-niva-andel), #ece7da)`, fontSize: "1.1rem" }}>✓</span>}
                   </div>
                 ))}
               </div>
@@ -706,7 +707,7 @@ function ChattLage({ onBack }) {
   }
 
   return (
-    <div style={{ height: "calc(100vh - 44px)", background: "linear-gradient(135deg,var(--sg-chatt-bg-1) 0%,var(--sg-chatt-bg-2) 50%,var(--sg-chatt-bg-3) 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "var(--sg-chatt-text-ljus)" }}>
+    <div className="sg-chatt" style={{ height: "calc(100vh - 44px)", background: "linear-gradient(135deg,var(--sg-chatt-bg-1) 0%,var(--sg-chatt-bg-2) 50%,var(--sg-chatt-bg-3) 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "var(--sg-chatt-text-ljus)" }}>
       <style>{chattCSS}</style>
 
       {/* Header */}
@@ -834,7 +835,7 @@ export default function SpecialGuiden() {
           </div>
           <div className="n-motif n-motif--quarter" aria-hidden="true"></div>
         </div>
-        <p style={{ color: "var(--sg-gron)", fontSize: ".8rem", background: "var(--sg-gron-yta)", border: "1px solid var(--sg-gron-ljus)", borderRadius: 20, padding: "4px 14px", display: "inline-block", marginBottom: "2rem", fontWeight: 600 }}>
+        <p style={{ color: "var(--sg-t-gron)", fontSize: ".8rem", background: "var(--sg-gron-yta)", border: "1px solid var(--sg-gron-ljus)", borderRadius: 20, padding: "4px 14px", display: "inline-block", marginBottom: "2rem", fontWeight: 600 }}>
           Elever med IF · Högstadiet · AKK & bildstöd
         </p>
 
@@ -844,15 +845,15 @@ export default function SpecialGuiden() {
             <div style={{ fontSize: ".95rem", fontWeight: 700, marginBottom: ".2rem" }}>Chattläge</div>
             <div style={{ fontSize: ".72rem", opacity: .88 }}>Beskriv fritt – få råd och genomgångar direkt</div>
           </button>
-          <button onClick={() => setMode("guide")} style={{ background: "var(--sg-vit)", color: "var(--sg-gron-mork)", border: "2px solid var(--sg-gron-kant)", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "var(--sg-font)", boxShadow: "0 4px 20px var(--sg-gronmork-a08)" }}>
+          <button onClick={() => setMode("guide")} style={{ background: "var(--sg-kort)", color: "var(--sg-t-gron-mork)", border: "2px solid var(--sg-gron-kant)", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "var(--sg-font)", boxShadow: "0 4px 20px var(--sg-gronmork-a08)" }}>
             <div style={{ fontSize: "1.7rem", marginBottom: ".35rem" }}>📋</div>
             <div style={{ fontSize: ".95rem", fontWeight: 700, marginBottom: ".2rem" }}>Guidat läge</div>
             <div style={{ fontSize: ".72rem", color: "var(--sg-text-dampad)" }}>Välj ämne, moment och nivåer steg för steg</div>
           </button>
         </div>
 
-        <div style={{ background: "var(--sg-vit)", borderRadius: 12, padding: ".9rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: ".8rem", textAlign: "left" }}>
-          <p style={{ margin: "0 0 .4rem", color: "var(--sg-gron)", fontSize: ".78rem", fontWeight: 700 }}>🌟 Vad Specialguiden ger dig:</p>
+        <div style={{ background: "var(--sg-kort)", borderRadius: 12, padding: ".9rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: ".8rem", textAlign: "left" }}>
+          <p style={{ margin: "0 0 .4rem", color: "var(--sg-t-gron)", fontSize: ".78rem", fontWeight: 700 }}>🌟 Vad Specialguiden ger dig:</p>
           <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
             {["Genomgångar anpassade till Lgrsär22", "Tre nivåer: Tidig, Grundläggande, Utvecklad", "AKK-tips och bildstödstrategier", "NPF-anpassningskort (ADHD, autism, epilepsi m.fl.)", "Resurser från SPSM, Widgit och Dart"].map((item, i) => (
               <li key={i} style={{ fontSize: ".78rem", color: "var(--sg-text)", marginBottom: ".2rem", lineHeight: 1.5 }}>{item}</li>
@@ -860,12 +861,13 @@ export default function SpecialGuiden() {
           </ul>
         </div>
 
-        <div style={{ background: "var(--sg-vit)", borderRadius: 12, padding: ".7rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: "1.2rem" }}>
-          <p style={{ margin: 0, color: "var(--sg-gron)", fontSize: ".78rem", fontWeight: 700 }}>💬 Prova i chattläget:</p>
+        <div style={{ background: "var(--sg-kort)", borderRadius: 12, padding: ".7rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: "1.2rem" }}>
+          <p style={{ margin: 0, color: "var(--sg-t-gron)", fontSize: ".78rem", fontWeight: 700 }}>💬 Prova i chattläget:</p>
           <p style={{ margin: ".2rem 0 0", color: "var(--sg-text-dampad)", fontSize: ".75rem" }}>"Hygien tre nivåer" · "AKK kommunikationsträning" · "Räkna pengar vardagsaktivitet"</p>
         </div>
 
         <p style={{ color: "var(--sg-text-dampad)", fontSize: ".7rem" }}>av MD · Grundsärskolan · Lgrsär22</p>
+        <NorvayFooter />
       </div>
     </div>
   );
