@@ -172,23 +172,23 @@ function NPFKort({ profiles, chapter }) {
   const aktiva = NPF_PROFILER.filter(p => profiles.includes(p.id));
   if (aktiva.length === 0) return null;
   return (
-    <div style={{ background: "white", borderRadius: 14, padding: "1.1rem", boxShadow: "0 2px 12px rgba(46,125,50,.08)", marginBottom: ".7rem", border: "2px solid #e8eaf6" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".9rem", paddingBottom: ".7rem", borderBottom: "1px solid #e8eaf6" }}>
+    <div style={{ background: "var(--sg-vit)", borderRadius: 14, padding: "1.1rem", boxShadow: "0 2px 12px var(--sg-gron-a08)", marginBottom: ".7rem", border: "2px solid var(--sg-lila-yta)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".9rem", paddingBottom: ".7rem", borderBottom: "1px solid var(--sg-lila-yta)" }}>
         <span style={{ fontSize: "1.2rem" }}>🧩</span>
         <div>
-          <div style={{ fontFamily: "Georgia,serif", fontWeight: 700, color: "#1a3a2a", fontSize: ".95rem" }}>NPF-anpassningar</div>
-          <div style={{ fontSize: ".72rem", color: "#4a7c59" }}>{chapter} · {aktiva.length} {aktiva.length === 1 ? "profil" : "profiler"} valda</div>
+          <div style={{ fontFamily: "Georgia,serif", fontWeight: 700, color: "var(--sg-text)", fontSize: ".95rem" }}>NPF-anpassningar</div>
+          <div style={{ fontSize: ".72rem", color: "var(--sg-text-dampad)" }}>{chapter} · {aktiva.length} {aktiva.length === 1 ? "profil" : "profiler"} valda</div>
         </div>
       </div>
       {aktiva.map((profil, idx) => (
-        <div key={profil.id} style={{ marginBottom: idx < aktiva.length - 1 ? "1rem" : 0, paddingBottom: idx < aktiva.length - 1 ? "1rem" : 0, borderBottom: idx < aktiva.length - 1 ? "1px solid #f1f8e9" : "none" }}>
+        <div key={profil.id} style={{ marginBottom: idx < aktiva.length - 1 ? "1rem" : 0, paddingBottom: idx < aktiva.length - 1 ? "1rem" : 0, borderBottom: idx < aktiva.length - 1 ? "1px solid var(--sg-gron-yta-2)" : "none" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: ".4rem", background: profil.bgFarg, border: `1.5px solid ${profil.farg}`, borderRadius: 50, padding: ".2rem .8rem", marginBottom: ".55rem" }}>
             <span style={{ fontSize: ".85rem" }}>{profil.emoji}</span>
             <span style={{ fontSize: ".78rem", fontWeight: 700, color: profil.textFarg }}>{profil.label}</span>
           </div>
           <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
             {(anpassningar[profil.id] || []).map((punkt, i) => (
-              <li key={i} style={{ fontSize: ".8rem", marginBottom: ".3rem", lineHeight: 1.6, color: "#1a2e1a" }}>{punkt}</li>
+              <li key={i} style={{ fontSize: ".8rem", marginBottom: ".3rem", lineHeight: 1.6, color: "var(--sg-text-2)" }}>{punkt}</li>
             ))}
           </ul>
         </div>
@@ -277,27 +277,27 @@ function ResurserKort({ amne, kapitel }) {
   const resurser = buildResurser(amne, kapitel);
   const totalLinks = resurser.reduce((s, r) => s + r.links.length, 0);
   return (
-    <div style={{ background: "white", borderRadius: 10, marginBottom: ".55rem", boxShadow: "0 2px 8px rgba(46,125,50,.07)", overflow: "hidden" }}>
+    <div style={{ background: "var(--sg-vit)", borderRadius: 10, marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)", overflow: "hidden" }}>
       <button onClick={() => setOpen(o => !o)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: ".85rem .9rem", background: "none", border: "none", cursor: "pointer", fontFamily: "Georgia,serif", textAlign: "left" }}>
-        <span style={{ display: "flex", alignItems: "center", gap: ".5rem", fontWeight: 700, color: "#1a3a2a", fontSize: ".85rem" }}>
+        <span style={{ display: "flex", alignItems: "center", gap: ".5rem", fontWeight: 700, color: "var(--sg-text)", fontSize: ".85rem" }}>
           🔍 Visa resurser
-          <span style={{ background: "#e8f5e9", borderRadius: 50, padding: ".1rem .55rem", fontSize: ".7rem", color: "#2e7d32", fontWeight: 700 }}>{totalLinks} länkar</span>
+          <span style={{ background: "var(--sg-gron-yta)", borderRadius: 50, padding: ".1rem .55rem", fontSize: ".7rem", color: "var(--sg-gron)", fontWeight: 700 }}>{totalLinks} länkar</span>
         </span>
-        <span style={{ color: "#2e7d32", fontSize: "1rem", transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▾</span>
+        <span style={{ color: "var(--sg-gron)", fontSize: "1rem", transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0deg)", display: "inline-block" }}>▾</span>
       </button>
       {open && (
-        <div style={{ borderTop: "1px solid #f1f8e9", padding: ".85rem .9rem" }}>
-          <p style={{ margin: "0 0 .8rem", fontSize: ".75rem", color: "#4a7c59", fontStyle: "italic" }}>Länkar öppnas i ny flik. Kontrollera att materialet passar eleven.</p>
+        <div style={{ borderTop: "1px solid var(--sg-gron-yta-2)", padding: ".85rem .9rem" }}>
+          <p style={{ margin: "0 0 .8rem", fontSize: ".75rem", color: "var(--sg-text-dampad)", fontStyle: "italic" }}>Länkar öppnas i ny flik. Kontrollera att materialet passar eleven.</p>
           {resurser.map((kategori, ki) => (
             <div key={ki} style={{ marginBottom: ki < resurser.length - 1 ? ".85rem" : 0 }}>
-              <div style={{ fontSize: ".75rem", fontWeight: 700, color: "#2e7d32", marginBottom: ".35rem" }}>{kategori.kategori}</div>
+              <div style={{ fontSize: ".75rem", fontWeight: 700, color: "var(--sg-gron)", marginBottom: ".35rem" }}>{kategori.kategori}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: ".3rem" }}>
                 {kategori.links.map((link, li) => (
                   <a key={li} href={link.url} target="_blank" rel="noopener noreferrer"
-                    style={{ display: "flex", alignItems: "center", gap: ".4rem", background: "#f8fdf8", border: "1px solid #c8e6c9", borderRadius: 8, padding: ".4rem .7rem", textDecoration: "none", color: "#1a3a2a", fontSize: ".78rem", transition: "all .15s" }}
-                    onMouseEnter={e => { e.currentTarget.style.background = "#e8f5e9"; e.currentTarget.style.borderColor = "#2e7d32"; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = "#f8fdf8"; e.currentTarget.style.borderColor = "#c8e6c9"; }}>
-                    <span style={{ color: "#2e7d32", fontSize: ".8rem" }}>↗</span>
+                    style={{ display: "flex", alignItems: "center", gap: ".4rem", background: "var(--sg-gron-yta-3)", border: "1px solid var(--sg-gron-ljus)", borderRadius: 8, padding: ".4rem .7rem", textDecoration: "none", color: "var(--sg-text)", fontSize: ".78rem", transition: "all .15s" }}
+                    onMouseEnter={e => { e.currentTarget.style.background = "var(--sg-gron-yta)"; e.currentTarget.style.borderColor = "var(--sg-gron)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "var(--sg-gron-yta-3)"; e.currentTarget.style.borderColor = "var(--sg-gron-ljus)"; }}>
+                    <span style={{ color: "var(--sg-gron)", fontSize: ".8rem" }}>↗</span>
                     {link.label}
                   </a>
                 ))}
@@ -366,54 +366,54 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
   return (
     <div>
       {/* Header */}
-      <div style={{ background: "linear-gradient(135deg,#1b5e20,#2e7d32)", borderRadius: 14, padding: "1.2rem", color: "white", marginBottom: ".7rem", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", top: -15, right: -15, width: 70, height: 70, borderRadius: "50%", background: "rgba(255,255,255,0.07)" }} />
+      <div style={{ background: "linear-gradient(135deg,var(--sg-gron-mork),var(--sg-gron))", borderRadius: 14, padding: "1.2rem", color: "var(--sg-vit)", marginBottom: ".7rem", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: -15, right: -15, width: 70, height: 70, borderRadius: "50%", background: "var(--sg-vit-a07)" }} />
         <div style={{ display: "flex", flexWrap: "wrap", gap: ".3rem", marginBottom: ".5rem" }}>
-          <span style={{ background: "rgba(255,255,255,0.18)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem" }}>Grundsärskola</span>
-          <span style={{ background: "rgba(255,255,255,0.18)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem" }}>{l.meta.amne}</span>
-          <span style={{ background: "rgba(255,255,255,0.22)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem", fontWeight: 700 }}>Lgrsär22</span>
+          <span style={{ background: "var(--sg-vit-a18)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem" }}>Grundsärskola</span>
+          <span style={{ background: "var(--sg-vit-a18)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem" }}>{l.meta.amne}</span>
+          <span style={{ background: "var(--sg-vit-a22)", borderRadius: 50, padding: ".2rem .65rem", fontSize: ".73rem", fontWeight: 700 }}>Lgrsär22</span>
         </div>
         <h2 style={{ margin: "0 0 .35rem", fontSize: "1.15rem", fontFamily: "Georgia,serif" }}>{l.meta.kapitel}</h2>
         <p style={{ margin: 0, fontSize: ".78rem", opacity: .85, lineHeight: 1.5 }}>{l.lgrsarKort}</p>
       </div>
 
       {/* Lgrsär22 */}
-      <div style={{ background: "#e3f2fd", borderRadius: 12, padding: "1rem 1.1rem", marginBottom: ".7rem", borderLeft: "4px solid #1565c0" }}>
-        <p style={{ margin: "0 0 .25rem", color: "#1565c0", fontWeight: 700, fontSize: ".78rem" }}>📌 Koppling till Lgrsär22</p>
-        <p style={{ margin: 0, color: "#0d2a4a", fontSize: ".82rem", lineHeight: 1.6, fontStyle: "italic" }}>{l.lgrsarCitat}</p>
+      <div style={{ background: "var(--sg-bla-yta)", borderRadius: 12, padding: "1rem 1.1rem", marginBottom: ".7rem", borderLeft: "4px solid var(--sg-bla)" }}>
+        <p style={{ margin: "0 0 .25rem", color: "var(--sg-bla)", fontWeight: 700, fontSize: ".78rem" }}>📌 Koppling till Lgrsär22</p>
+        <p style={{ margin: 0, color: "var(--sg-bla-text)", fontSize: ".82rem", lineHeight: 1.6, fontStyle: "italic" }}>{l.lgrsarCitat}</p>
       </div>
 
       {/* Statistik */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: ".45rem", marginBottom: ".65rem" }}>
         {[["Nivåer", l.meta.nivaer.length], ["Moment", l.steg.length], ["Lgrsär22", "✓"]].map(([lb, v]) => (
-          <div key={lb} style={{ background: "white", borderRadius: 10, padding: ".6rem", textAlign: "center", boxShadow: "0 2px 8px rgba(46,125,50,.07)" }}>
-            <div style={{ fontSize: "1.3rem", fontWeight: 700, color: "#2e7d32" }}>{v}</div>
-            <div style={{ fontSize: ".68rem", color: "#4a7c59" }}>{lb}</div>
+          <div key={lb} style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".6rem", textAlign: "center", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+            <div style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--sg-gron)" }}>{v}</div>
+            <div style={{ fontSize: ".68rem", color: "var(--sg-text-dampad)" }}>{lb}</div>
           </div>
         ))}
       </div>
 
       {/* AKK-tips */}
-      <div style={{ background: "#f3e5f5", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", border: "1px solid #ce93d8" }}>
-        <h4 style={{ margin: "0 0 .4rem", color: "#6a1b9a", fontSize: ".85rem" }}>💬 AKK & kommunikationsstöd</h4>
+      <div style={{ background: "var(--sg-lila-yta-2)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", border: "1px solid var(--sg-lila-ljus)" }}>
+        <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-lila)", fontSize: ".85rem" }}>💬 AKK & kommunikationsstöd</h4>
         <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>
-          {l.akkTips.map((t, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".2rem", color: "#1a2e1a" }}>{t}</li>)}
+          {l.akkTips.map((t, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".2rem", color: "var(--sg-text-2)" }}>{t}</li>)}
         </ul>
       </div>
 
       {/* Förberedelse */}
-      <div style={{ background: "white", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px rgba(46,125,50,.07)" }}>
-        <h4 style={{ margin: "0 0 .4rem", color: "#1a3a2a", fontSize: ".85rem" }}>📋 Förberedelse <span style={{ fontWeight: 400, color: "#4a7c59", fontSize: ".72rem" }}>(5 min)</span></h4>
-        <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.forberedelse.map((p, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".2rem", color: "#1a2e1a" }}>{p}</li>)}</ul>
+      <div style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+        <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-text)", fontSize: ".85rem" }}>📋 Förberedelse <span style={{ fontWeight: 400, color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>(5 min)</span></h4>
+        <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.forberedelse.map((p, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".2rem", color: "var(--sg-text-2)" }}>{p}</li>)}</ul>
       </div>
 
       {/* Genomgång per nivå */}
-      <div style={{ background: "white", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px rgba(46,125,50,.07)" }}>
-        <h4 style={{ margin: "0 0 .6rem", color: "#1a3a2a", fontSize: ".85rem" }}>📈 Genomgång per nivå</h4>
+      <div style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+        <h4 style={{ margin: "0 0 .6rem", color: "var(--sg-text)", fontSize: ".85rem" }}>📈 Genomgång per nivå</h4>
         <div style={{ display: "flex", gap: ".35rem", flexWrap: "wrap", marginBottom: ".6rem" }}>
           {l.steg.map((s, i) => (
             <button key={i} onClick={() => setAktivSteg(aktivSteg === i ? null : i)}
-              style={{ border: "none", borderRadius: 50, padding: ".3rem .75rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".73rem", fontWeight: 700, background: aktivSteg === i ? s.farg : "#f1f8e9", color: aktivSteg === i ? "white" : s.farg }}>
+              style={{ border: "none", borderRadius: 50, padding: ".3rem .75rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".73rem", fontWeight: 700, background: aktivSteg === i ? s.farg : "var(--sg-gron-yta-2)", color: aktivSteg === i ? "var(--sg-vit)" : s.farg }}>
               {s.ikon} {s.niva}
             </button>
           ))}
@@ -421,30 +421,30 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
         {l.steg.map((s, i) => (
           <div key={i} style={{ display: aktivSteg === i || aktivSteg === null ? "block" : "none", borderLeft: `4px solid ${s.farg}`, paddingLeft: ".8rem", marginBottom: aktivSteg === null ? ".9rem" : 0 }}>
             <strong style={{ color: s.farg, fontSize: ".82rem" }}>{s.ikon} {s.niva}</strong>
-            <div style={{ fontSize: ".73rem", color: "#4a7c59", fontStyle: "italic", margin: ".2rem 0 .35rem" }}>{NIVA_BESKRIVNING[s.niva]}</div>
-            <ul style={{ margin: "0 0 .45rem", paddingLeft: "1.1rem" }}>{s.moment.map((m, j) => <li key={j} style={{ fontSize: ".78rem", marginBottom: ".18rem", color: "#1a2e1a" }}>{m}</li>)}</ul>
-            <div style={{ background: "#f1f8e9", borderRadius: 7, padding: ".35rem .65rem", marginBottom: ".28rem" }}>
-              <span style={{ fontSize: ".68rem", color: "#2e7d32", fontWeight: 700 }}>❓ </span>
-              <span style={{ fontSize: ".76rem", color: "#1a2e1a", fontStyle: "italic" }}>{s.fraga}</span>
+            <div style={{ fontSize: ".73rem", color: "var(--sg-text-dampad)", fontStyle: "italic", margin: ".2rem 0 .35rem" }}>{NIVA_BESKRIVNING[s.niva]}</div>
+            <ul style={{ margin: "0 0 .45rem", paddingLeft: "1.1rem" }}>{s.moment.map((m, j) => <li key={j} style={{ fontSize: ".78rem", marginBottom: ".18rem", color: "var(--sg-text-2)" }}>{m}</li>)}</ul>
+            <div style={{ background: "var(--sg-gron-yta-2)", borderRadius: 7, padding: ".35rem .65rem", marginBottom: ".28rem" }}>
+              <span style={{ fontSize: ".68rem", color: "var(--sg-gron)", fontWeight: 700 }}>❓ </span>
+              <span style={{ fontSize: ".76rem", color: "var(--sg-text-2)", fontStyle: "italic" }}>{s.fraga}</span>
             </div>
-            <div style={{ background: "#e8eaf6", borderRadius: 7, padding: ".35rem .65rem" }}>
-              <span style={{ fontSize: ".68rem", color: "#3949ab", fontWeight: 700 }}>🤝 Stöd: </span>
-              <span style={{ fontSize: ".76rem", color: "#1a2e1a" }}>{s.stod}</span>
+            <div style={{ background: "var(--sg-lila-yta)", borderRadius: 7, padding: ".35rem .65rem" }}>
+              <span style={{ fontSize: ".68rem", color: "var(--sg-indigo)", fontWeight: 700 }}>🤝 Stöd: </span>
+              <span style={{ fontSize: ".76rem", color: "var(--sg-text-2)" }}>{s.stod}</span>
             </div>
           </div>
         ))}
       </div>
 
       {/* Avslutning */}
-      <div style={{ background: "white", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px rgba(46,125,50,.07)" }}>
-        <h4 style={{ margin: "0 0 .4rem", color: "#1a3a2a", fontSize: ".85rem" }}>🔄 Avslutning <span style={{ fontWeight: 400, color: "#4a7c59", fontSize: ".72rem" }}>(5 min)</span></h4>
-        <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.avslutning.map((p, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".18rem", color: "#1a2e1a" }}>{p}</li>)}</ul>
+      <div style={{ background: "var(--sg-vit)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", boxShadow: "0 2px 8px var(--sg-gron-a07)" }}>
+        <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-text)", fontSize: ".85rem" }}>🔄 Avslutning <span style={{ fontWeight: 400, color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>(5 min)</span></h4>
+        <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.avslutning.map((p, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".18rem", color: "var(--sg-text-2)" }}>{p}</li>)}</ul>
       </div>
 
       {/* Tips */}
-      <div style={{ background: "#e8f5e9", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", border: "1px solid #c8e6c9" }}>
-        <h4 style={{ margin: "0 0 .4rem", color: "#1a3a2a", fontSize: ".85rem" }}>💡 Tips till specialläraren</h4>
-        <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.tips.map((t, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".18rem", color: "#1a2e1a" }}>{t}</li>)}</ul>
+      <div style={{ background: "var(--sg-gron-yta)", borderRadius: 10, padding: ".9rem", marginBottom: ".55rem", border: "1px solid var(--sg-gron-ljus)" }}>
+        <h4 style={{ margin: "0 0 .4rem", color: "var(--sg-text)", fontSize: ".85rem" }}>💡 Tips till specialläraren</h4>
+        <ul style={{ margin: 0, paddingLeft: "1.1rem" }}>{l.tips.map((t, i) => <li key={i} style={{ fontSize: ".8rem", marginBottom: ".18rem", color: "var(--sg-text-2)" }}>{t}</li>)}</ul>
       </div>
 
       {/* Resurser */}
@@ -452,8 +452,8 @@ function LektionKort({ l, onKopiera, onPrint, kopieradT }) {
 
       {/* Knappar */}
       <div style={{ display: "flex", gap: ".45rem", flexWrap: "wrap" }}>
-        <button onClick={() => onKopiera(exportText())} style={{ background: "linear-gradient(135deg,#1565c0,#0d47a1)", color: "white", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "Georgia,serif", fontWeight: 700, cursor: "pointer" }}>{kopieradT ? "✅ Kopierat!" : "📋 Kopiera"}</button>
-        <button onClick={onPrint} style={{ background: "linear-gradient(135deg,#6a1b9a,#4a148c)", color: "white", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "Georgia,serif", fontWeight: 700, cursor: "pointer" }}>🖨️ Skriv ut</button>
+        <button onClick={() => onKopiera(exportText())} style={{ background: "linear-gradient(135deg,var(--sg-bla),var(--sg-bla-mork))", color: "var(--sg-vit)", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "Georgia,serif", fontWeight: 700, cursor: "pointer" }}>{kopieradT ? "✅ Kopierat!" : "📋 Kopiera"}</button>
+        <button onClick={onPrint} style={{ background: "linear-gradient(135deg,var(--sg-lila),var(--sg-lila-mork))", color: "var(--sg-vit)", border: "none", borderRadius: 50, padding: ".55rem 1.1rem", fontSize: ".78rem", fontFamily: "Georgia,serif", fontWeight: 700, cursor: "pointer" }}>🖨️ Skriv ut</button>
       </div>
     </div>
   );
@@ -498,37 +498,37 @@ function GuidatLage({ onBack }) {
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,#e8f5e9,#f1f8e9,#e0f2f1)", fontFamily: "Georgia,serif", padding: "1rem" }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,var(--sg-gron-yta),var(--sg-gron-yta-2),var(--sg-turkos-yta))", fontFamily: "Georgia,serif", padding: "1rem" }}>
       <style>{`
-        .cbtn{transition:all .18s;border:2px solid #a5d6a7;background:white;border-radius:10px;padding:.55rem .8rem;cursor:pointer;font-family:Georgia,serif;font-size:.83rem;color:#1a3a2a;text-align:left;width:100%}
-        .cbtn:hover{border-color:#2e7d32;background:#f1f8e9}
-        .cbtn.on{border-color:#2e7d32;background:#e8f5e9;font-weight:700}
-        .gbtn{background:linear-gradient(135deg,#2e7d32,#1b5e20);color:white;border:none;border-radius:50px;padding:.75rem 1.8rem;font-size:.9rem;font-family:Georgia,serif;font-weight:700;cursor:pointer}
-        .gbtn.sec{background:linear-gradient(135deg,#78909c,#546e7a)}
+        .cbtn{transition:all .18s;border:2px solid var(--sg-gron-kant);background:var(--sg-vit);border-radius:10px;padding:.55rem .8rem;cursor:pointer;font-family:Georgia,serif;font-size:.83rem;color:var(--sg-text);text-align:left;width:100%}
+        .cbtn:hover{border-color:var(--sg-gron);background:var(--sg-gron-yta-2)}
+        .cbtn.on{border-color:var(--sg-gron);background:var(--sg-gron-yta);font-weight:700}
+        .gbtn{background:linear-gradient(135deg,var(--sg-gron),var(--sg-gron-mork));color:var(--sg-vit);border:none;border-radius:50px;padding:.75rem 1.8rem;font-size:.9rem;font-family:Georgia,serif;font-weight:700;cursor:pointer}
+        .gbtn.sec{background:linear-gradient(135deg,var(--sg-gra-2),var(--sg-gra))}
         .npf-pill{transition:all .18s;display:flex;align-items:center;gap:.6rem;border-radius:12px;padding:.65rem .9rem;cursor:pointer;border:2px solid transparent}
         ul{padding-left:1.2rem;margin:.3rem 0}
-        li{margin-bottom:.3rem;line-height:1.55;color:#1a2e1a}
+        li{margin-bottom:.3rem;line-height:1.55;color:var(--sg-text-2)}
         @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
         .fi{animation:fi .35s ease}
       `}</style>
       <div style={{ maxWidth: 660, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: ".7rem", marginBottom: "1.2rem" }}>
-          <button onClick={onBack} style={{ background: "#2e7d32", color: "white", border: "none", borderRadius: 8, padding: ".4rem .85rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".8rem" }}>← Hem</button>
+          <button onClick={onBack} style={{ background: "var(--sg-gron)", color: "var(--sg-vit)", border: "none", borderRadius: 8, padding: ".4rem .85rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".8rem" }}>← Hem</button>
           <span style={{ fontSize: "1.5rem" }}>♿</span>
           <div>
-            <div style={{ color: "#1b5e20", fontWeight: 700, fontSize: ".95rem" }}>SpecialGuiden</div>
-            <div style={{ color: "#4a7c59", fontSize: ".72rem" }}>Guidat läge · Lgrsär22 · Grundsärskolan</div>
+            <div style={{ color: "var(--sg-gron-mork)", fontWeight: 700, fontSize: ".95rem" }}>SpecialGuiden</div>
+            <div style={{ color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>Guidat läge · Lgrsär22 · Grundsärskolan</div>
           </div>
         </div>
 
         {/* NPF-STEG */}
         {!lektion && npfSteg && (
-          <div className="fi" style={{ background: "white", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px rgba(46,125,50,.08)" }}>
+          <div className="fi" style={{ background: "var(--sg-vit)", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px var(--sg-gron-a08)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".3rem" }}>
               <span style={{ fontSize: "1.3rem" }}>🧩</span>
-              <h2 style={{ color: "#1a3a2a", margin: 0, fontSize: "1.1rem" }}>Ytterligare diagnoser?</h2>
+              <h2 style={{ color: "var(--sg-text)", margin: 0, fontSize: "1.1rem" }}>Ytterligare diagnoser?</h2>
             </div>
-            <p style={{ color: "#4a7c59", fontSize: ".83rem", marginBottom: "1.2rem", lineHeight: 1.6 }}>
+            <p style={{ color: "var(--sg-text-dampad)", fontSize: ".83rem", marginBottom: "1.2rem", lineHeight: 1.6 }}>
               Många elever med IF har även andra diagnoser. Välj de som stämmer – genomgången kompletteras med ett anpassningskort. Steget är frivilligt.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: ".55rem", marginBottom: "1.3rem" }}>
@@ -536,11 +536,11 @@ function GuidatLage({ onBack }) {
                 const vald = npfProfiler.includes(profil.id);
                 return (
                   <div key={profil.id} className="npf-pill" onClick={() => toggleNpf(profil.id)}
-                    style={{ background: vald ? profil.bgFarg : "white", border: `2px solid ${vald ? profil.farg : "#a5d6a7"}` }}>
+                    style={{ background: vald ? profil.bgFarg : "var(--sg-vit)", border: `2px solid ${vald ? profil.farg : "var(--sg-gron-kant)"}` }}>
                     <div style={{ width: 30, height: 30, borderRadius: "50%", background: profil.farg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>{profil.emoji}</div>
                     <div>
-                      <div style={{ fontSize: ".82rem", fontWeight: 700, color: vald ? profil.textFarg : "#1a3a2a" }}>{profil.label}</div>
-                      <div style={{ fontSize: ".7rem", color: vald ? profil.farg : "#4a7c59" }}>{profil.undertitel}</div>
+                      <div style={{ fontSize: ".82rem", fontWeight: 700, color: vald ? profil.textFarg : "var(--sg-text)" }}>{profil.label}</div>
+                      <div style={{ fontSize: ".7rem", color: vald ? profil.farg : "var(--sg-text-dampad)" }}>{profil.undertitel}</div>
                     </div>
                     {vald && <span style={{ marginLeft: "auto", fontSize: ".9rem" }}>✅</span>}
                   </div>
@@ -548,7 +548,7 @@ function GuidatLage({ onBack }) {
               })}
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: ".5rem", flexWrap: "wrap" }}>
-              <button onClick={() => { setNpfProfiler([]); genereraLektion(0, []); }} style={{ background: "none", border: "2px solid #c8e6c9", borderRadius: 50, padding: ".6rem 1.3rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".83rem", color: "#4a7c59" }}>Hoppa över</button>
+              <button onClick={() => { setNpfProfiler([]); genereraLektion(0, []); }} style={{ background: "none", border: "2px solid var(--sg-gron-ljus)", borderRadius: 50, padding: ".6rem 1.3rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".83rem", color: "var(--sg-text-dampad)" }}>Hoppa över</button>
               <button className="gbtn" onClick={() => genereraLektion(0, npfProfiler)}>
                 {npfProfiler.length > 0 ? `✨ Skapa med ${npfProfiler.length} tilläggsprofil${npfProfiler.length > 1 ? "er" : ""}` : "✨ Skapa genomgång"}
               </button>
@@ -558,22 +558,22 @@ function GuidatLage({ onBack }) {
 
         {/* VÄLJ-FORMULÄR */}
         {!lektion && !npfSteg && (
-          <div className="fi" style={{ background: "white", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px rgba(46,125,50,.08)" }}>
+          <div className="fi" style={{ background: "var(--sg-vit)", borderRadius: 18, padding: "1.5rem", boxShadow: "0 4px 20px var(--sg-gron-a08)" }}>
 
             {/* Ämnesgrupp */}
-            <h2 style={{ color: "#1a3a2a", marginTop: 0, fontSize: "1.1rem" }}>Välj ämnesgrupp</h2>
+            <h2 style={{ color: "var(--sg-text)", marginTop: 0, fontSize: "1.1rem" }}>Välj ämnesgrupp</h2>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: ".45rem", marginBottom: "1rem" }}>
               {grupper.map(g => (
                 <button key={g} className={`cbtn${amnesgrupp === g ? " on" : ""}`} onClick={() => { setAmnesgrupp(g); setAmne(null); setOmrade(null); setKapitel(null); }}>
                   {g === "Ämnen (Lgrsär22)" ? "📚 Ämnen" : "🌟 Ämnesområden"}
-                  <div style={{ fontSize: ".7rem", color: "#4a7c59", fontWeight: 400, marginTop: "2px" }}>{g.includes("Ämnesområden") ? "Kommunikation, Motorik m.fl." : "Svenska, Matte, NO m.fl."}</div>
+                  <div style={{ fontSize: ".7rem", color: "var(--sg-text-dampad)", fontWeight: 400, marginTop: "2px" }}>{g.includes("Ämnesområden") ? "Kommunikation, Motorik m.fl." : "Svenska, Matte, NO m.fl."}</div>
                 </button>
               ))}
             </div>
 
             {/* Ämne */}
             {amnesgrupp && <>
-              <h2 style={{ color: "#1a3a2a", fontSize: "1rem", marginTop: "1rem" }}>Välj ämne</h2>
+              <h2 style={{ color: "var(--sg-text)", fontSize: "1rem", marginTop: "1rem" }}>Välj ämne</h2>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: ".45rem", marginBottom: "1rem" }}>
                 {amnen.map(a => <button key={a} className={`cbtn${amne === a ? " on" : ""}`} onClick={() => { setAmne(a); setOmrade(null); setKapitel(null); }}>{a}</button>)}
               </div>
@@ -581,7 +581,7 @@ function GuidatLage({ onBack }) {
 
             {/* Område */}
             {amne && <>
-              <h2 style={{ color: "#1a3a2a", fontSize: "1rem", marginTop: "1rem" }}>Välj område</h2>
+              <h2 style={{ color: "var(--sg-text)", fontSize: "1rem", marginTop: "1rem" }}>Välj område</h2>
               <div style={{ display: "grid", gap: ".4rem", marginBottom: "1rem" }}>
                 {omraden.map(o => <button key={o} className={`cbtn${omrade === o ? " on" : ""}`} onClick={() => { setOmrade(o); setKapitel(null); }}>{o}</button>)}
               </div>
@@ -589,30 +589,30 @@ function GuidatLage({ onBack }) {
 
             {/* Kapitel */}
             {omrade && <>
-              <h2 style={{ color: "#1a3a2a", fontSize: "1rem", marginTop: "1rem" }}>Välj moment</h2>
+              <h2 style={{ color: "var(--sg-text)", fontSize: "1rem", marginTop: "1rem" }}>Välj moment</h2>
               {!anvandEget && <>
                 <div style={{ display: "grid", gap: ".35rem", maxHeight: 240, overflowY: "auto", paddingRight: 4, marginBottom: ".7rem" }}>
                   {kapitel_lista.map(c => <button key={c} className={`cbtn${kapitel === c && !anvandEget ? " on" : ""}`} onClick={() => { setKapitel(c); setEgetKapitel(""); }}>📖 {c}</button>)}
                 </div>
-                <button onClick={() => { setAnvandEget(true); setKapitel(null); }} style={{ background: "none", border: "2px dashed #a5d6a7", borderRadius: 10, padding: ".6rem 1rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".85rem", color: "#4a7c59", width: "100%", textAlign: "center" }}>✏️ Skriv in eget moment</button>
+                <button onClick={() => { setAnvandEget(true); setKapitel(null); }} style={{ background: "none", border: "2px dashed var(--sg-gron-kant)", borderRadius: 10, padding: ".6rem 1rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".85rem", color: "var(--sg-text-dampad)", width: "100%", textAlign: "center" }}>✏️ Skriv in eget moment</button>
               </>}
               {anvandEget && <div style={{ marginTop: ".5rem" }}>
-                <input placeholder="T.ex. 'Tvätta händer med stöd' eller 'Räkna pengar i affären'" value={egetKapitel} onChange={e => setEgetKapitel(e.target.value)} autoFocus style={{ width: "100%", padding: ".8rem 1rem", border: "2px solid #a5d6a7", borderRadius: 10, fontFamily: "Georgia,serif", fontSize: ".88rem", outline: "none", boxSizing: "border-box", marginBottom: ".5rem" }} />
-                <button onClick={() => { setAnvandEget(false); setEgetKapitel(""); }} style={{ background: "none", border: "2px dashed #a5d6a7", borderRadius: 10, padding: ".5rem 1rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".83rem", color: "#4a7c59" }}>← Tillbaka till listan</button>
+                <input placeholder="T.ex. 'Tvätta händer med stöd' eller 'Räkna pengar i affären'" value={egetKapitel} onChange={e => setEgetKapitel(e.target.value)} autoFocus style={{ width: "100%", padding: ".8rem 1rem", border: "2px solid var(--sg-gron-kant)", borderRadius: 10, fontFamily: "Georgia,serif", fontSize: ".88rem", outline: "none", boxSizing: "border-box", marginBottom: ".5rem" }} />
+                <button onClick={() => { setAnvandEget(false); setEgetKapitel(""); }} style={{ background: "none", border: "2px dashed var(--sg-gron-kant)", borderRadius: 10, padding: ".5rem 1rem", cursor: "pointer", fontFamily: "Georgia,serif", fontSize: ".83rem", color: "var(--sg-text-dampad)" }}>← Tillbaka till listan</button>
               </div>}
             </>}
 
             {/* Nivåval */}
             {aktivtKapitel && <>
-              <h2 style={{ color: "#1a3a2a", fontSize: "1rem", marginTop: "1.2rem" }}>Elevernas nivåer</h2>
-              <p style={{ color: "#4a7c59", fontSize: ".83rem", marginBottom: ".8rem" }}>Välj de nivåer som finns i gruppen.</p>
+              <h2 style={{ color: "var(--sg-text)", fontSize: "1rem", marginTop: "1.2rem" }}>Elevernas nivåer</h2>
+              <p style={{ color: "var(--sg-text-dampad)", fontSize: ".83rem", marginBottom: ".8rem" }}>Välj de nivåer som finns i gruppen.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: ".55rem", marginBottom: "1.2rem" }}>
                 {NIVA_LABELS.map((n, i) => (
-                  <div key={n} onClick={() => toggleNiva(n)} style={{ border: `2px solid ${valdaNivaer.includes(n) ? NIVA_FARG[i] : "#a5d6a7"}`, background: valdaNivaer.includes(n) ? "#f1f8e9" : "white", borderRadius: 10, padding: ".7rem 1rem", cursor: "pointer", display: "flex", alignItems: "center", gap: ".8rem" }}>
+                  <div key={n} onClick={() => toggleNiva(n)} style={{ border: `2px solid ${valdaNivaer.includes(n) ? NIVA_FARG[i] : "var(--sg-gron-kant)"}`, background: valdaNivaer.includes(n) ? "var(--sg-gron-yta-2)" : "var(--sg-vit)", borderRadius: 10, padding: ".7rem 1rem", cursor: "pointer", display: "flex", alignItems: "center", gap: ".8rem" }}>
                     <span style={{ fontSize: "1.1rem" }}>{NIVA_IKONER[i]}</span>
                     <div>
                       <div style={{ fontWeight: 700, fontSize: ".88rem", color: NIVA_FARG[i] }}>{n}</div>
-                      <div style={{ fontSize: ".73rem", color: "#4a7c59" }}>{NIVA_BESKRIVNING[n].slice(0, 60)}...</div>
+                      <div style={{ fontSize: ".73rem", color: "var(--sg-text-dampad)" }}>{NIVA_BESKRIVNING[n].slice(0, 60)}...</div>
                     </div>
                     {valdaNivaer.includes(n) && <span style={{ marginLeft: "auto", color: NIVA_FARG[i], fontSize: "1.1rem" }}>✓</span>}
                   </div>
@@ -663,15 +663,15 @@ const chattCSS = `
   @keyframes sgpulse { 0%,100%{opacity:.3} 50%{opacity:1} }
   @keyframes sgfi { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
   .sgfi { animation: sgfi .35s ease; }
-  .sgdot { width:7px; height:7px; border-radius:50%; background:#4caf50; animation:sgpulse 1.2s ease infinite; }
-  .sg-ex-btn { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:.75rem 1rem; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:.83rem; color:#b0d4b0; text-align:left; transition:all .2s; display:flex; align-items:center; gap:.7rem; }
-  .sg-ex-btn:hover { border-color:rgba(76,175,80,0.5); background:rgba(76,175,80,0.1); color:#81c784; }
+  .sgdot { width:7px; height:7px; border-radius:50%; background:var(--sg-chatt-gron); animation:sgpulse 1.2s ease infinite; }
+  .sg-ex-btn { background:var(--sg-vit-a05); border:1px solid var(--sg-vit-a12); border-radius:12px; padding:.75rem 1rem; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:.83rem; color:var(--sg-chatt-text-2); text-align:left; transition:all .2s; display:flex; align-items:center; gap:.7rem; }
+  .sg-ex-btn:hover { border-color:var(--sg-chattgron-a50); background:var(--sg-chattgron-a10); color:var(--sg-chatt-accent); }
   .sg-send { border:none; border-radius:12px; padding:.75rem 1.1rem; font-size:1.1rem; font-weight:700; cursor:pointer; transition:all .2s; flex-shrink:0; }
-  .sg-send:not(:disabled):hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(76,175,80,.4); }
+  .sg-send:not(:disabled):hover { transform:translateY(-1px); box-shadow:0 6px 20px var(--sg-chattgron-a40); }
   .sg-textarea { border-radius:14px; padding:.75rem 1rem; font-size:.88rem; resize:none; line-height:1.6; box-sizing:border-box; width:100%; outline:none; font-family:'DM Sans',sans-serif; transition:border-color .2s; }
-  .sg-textarea:focus { border-color:rgba(76,175,80,0.6) !important; }
-  .sg-copy-btn { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:6px; padding:3px 8px; cursor:pointer; font-size:12px; color:#80a080; font-family:inherit; transition:all .15s; }
-  .sg-copy-btn:hover { background:rgba(76,175,80,0.15); color:#81c784; }
+  .sg-textarea:focus { border-color:var(--sg-chattgron-a60) !important; }
+  .sg-copy-btn { background:var(--sg-vit-a07); border:1px solid var(--sg-vit-a12); border-radius:6px; padding:3px 8px; cursor:pointer; font-size:12px; color:var(--sg-chatt-dampad); font-family:inherit; transition:all .15s; }
+  .sg-copy-btn:hover { background:var(--sg-chattgron-a15); color:var(--sg-chatt-accent); }
 `;
 
 function ChattLage({ onBack }) {
@@ -706,22 +706,22 @@ function ChattLage({ onBack }) {
   }
 
   return (
-    <div style={{ height: "calc(100vh - 44px)", background: "linear-gradient(135deg,#0a1628 0%,#0d2137 50%,#0a2818 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "#e0e8e0" }}>
+    <div style={{ height: "calc(100vh - 44px)", background: "linear-gradient(135deg,var(--sg-chatt-bg-1) 0%,var(--sg-chatt-bg-2) 50%,var(--sg-chatt-bg-3) 100%)", fontFamily: "'DM Sans','Segoe UI',sans-serif", display: "flex", flexDirection: "column", color: "var(--sg-chatt-text-ljus)" }}>
       <style>{chattCSS}</style>
 
       {/* Header */}
-      <div style={{ background: "linear-gradient(135deg,rgba(76,175,80,0.15),rgba(46,125,50,0.08))", borderBottom: "1px solid rgba(76,175,80,0.2)", padding: ".9rem 1.2rem", display: "flex", alignItems: "center", gap: ".8rem", flexShrink: 0, boxShadow: "0 2px 20px rgba(0,0,0,0.4)" }}>
-        <button onClick={onBack} style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 8, padding: ".35rem .85rem", color: "#b0d4b0", cursor: "pointer", fontFamily: "inherit", fontSize: ".78rem" }}>← Hem</button>
-        <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0, boxShadow: "0 2px 12px rgba(76,175,80,0.4)" }}>♿</div>
+      <div style={{ background: "linear-gradient(135deg,var(--sg-chattgron-a15),var(--sg-gron-a08))", borderBottom: "1px solid var(--sg-chattgron-a20)", padding: ".9rem 1.2rem", display: "flex", alignItems: "center", gap: ".8rem", flexShrink: 0, boxShadow: "0 2px 20px var(--sg-svart-a40)" }}>
+        <button onClick={onBack} style={{ background: "var(--sg-vit-a08)", border: "1px solid var(--sg-vit-a15)", borderRadius: 8, padding: ".35rem .85rem", color: "var(--sg-chatt-text-2)", cursor: "pointer", fontFamily: "inherit", fontSize: ".78rem" }}>← Hem</button>
+        <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0, boxShadow: "0 2px 12px var(--sg-chattgron-a40)" }}>♿</div>
         <div style={{ flex: 1 }}>
-          <div style={{ color: "#81c784", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Newsreader',serif", letterSpacing: ".3px" }}>SpecialGuiden</div>
-          <div style={{ color: "#4a7c4a", fontSize: ".68rem" }}>Chattläge · Lgrsär22 · Grundsärskolan · IF</div>
+          <div style={{ color: "var(--sg-chatt-accent)", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Newsreader',serif", letterSpacing: ".3px" }}>SpecialGuiden</div>
+          <div style={{ color: "var(--sg-chatt-dampad-2)", fontSize: ".68rem" }}>Chattläge · Lgrsär22 · Grundsärskolan · IF</div>
         </div>
         {messages.length > 0 && (
-          <button onClick={() => setMessages([])} style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 7, padding: ".3rem .8rem", color: "#80a080", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem" }}>Rensa</button>
+          <button onClick={() => setMessages([])} style={{ background: "var(--sg-vit-a07)", border: "1px solid var(--sg-vit-a12)", borderRadius: 7, padding: ".3rem .8rem", color: "var(--sg-chatt-dampad)", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem" }}>Rensa</button>
         )}
         {messages.some(m => m.role === "assistant") && (
-          <button onClick={() => window.print()} style={{ background: "linear-gradient(135deg,#6a1b9a,#4a148c)", border: "none", borderRadius: 7, padding: ".3rem .8rem", color: "white", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem", fontWeight: 600 }}>🖨️ Skriv ut</button>
+          <button onClick={() => window.print()} style={{ background: "linear-gradient(135deg,var(--sg-lila),var(--sg-lila-mork))", border: "none", borderRadius: 7, padding: ".3rem .8rem", color: "var(--sg-vit)", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem", fontWeight: 600 }}>🖨️ Skriv ut</button>
         )}
       </div>
 
@@ -730,9 +730,9 @@ function ChattLage({ onBack }) {
 
         {messages.length === 0 && (
           <div className="sgfi" style={{ textAlign: "center", padding: "2rem .5rem" }}>
-            <div style={{ width: 76, height: 76, borderRadius: "50%", background: "linear-gradient(135deg,rgba(76,175,80,0.2),rgba(46,125,50,0.1))", border: "1px solid rgba(76,175,80,0.3)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem", fontSize: "2.2rem", boxShadow: "0 4px 20px rgba(76,175,80,0.2)" }}>♿</div>
-            <h2 style={{ color: "#81c784", margin: "0 0 .5rem", fontFamily: "'Newsreader',serif", fontSize: "1.4rem" }}>Hej! Vad behöver du?</h2>
-            <p style={{ color: "#4a6a4a", fontSize: ".85rem", lineHeight: 1.7, maxWidth: 400, margin: "0 auto 2rem" }}>
+            <div style={{ width: 76, height: 76, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chattgron-a20),var(--sg-gron-a10))", border: "1px solid var(--sg-chattgron-a30)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.2rem", fontSize: "2.2rem", boxShadow: "0 4px 20px var(--sg-chattgron-a20)" }}>♿</div>
+            <h2 style={{ color: "var(--sg-chatt-accent)", margin: "0 0 .5rem", fontFamily: "'Newsreader',serif", fontSize: "1.4rem" }}>Hej! Vad behöver du?</h2>
+            <p style={{ color: "var(--sg-chatt-dampad-3)", fontSize: ".85rem", lineHeight: 1.7, maxWidth: 400, margin: "0 auto 2rem" }}>
               Jag hjälper dig med Lgrsär22, AKK-strategier, anpassad undervisning och lektionsplanering för elever med IF.
             </p>
             <div style={{ display: "grid", gap: ".5rem", textAlign: "left", maxWidth: 520, margin: "0 auto 1.5rem" }}>
@@ -743,7 +743,7 @@ function ChattLage({ onBack }) {
                 </button>
               ))}
             </div>
-            <div style={{ padding: ".8rem 1.2rem", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 12, fontSize: ".74rem", color: "#3a5a3a", maxWidth: 520, margin: "0 auto" }}>
+            <div style={{ padding: ".8rem 1.2rem", background: "var(--sg-vit-a03)", border: "1px solid var(--sg-vit-a07)", borderRadius: 12, fontSize: ".74rem", color: "var(--sg-chatt-dampad-4)", maxWidth: 520, margin: "0 auto" }}>
               💡 Tips: Beskriv gärna elevens nivå och eventuella diagnoser – ju mer info desto bättre svar
             </div>
           </div>
@@ -752,21 +752,21 @@ function ChattLage({ onBack }) {
         {messages.map((msg, i) => (
           <div key={i} className="sgfi" style={{ marginBottom: "1.1rem", display: "flex", flexDirection: "column", alignItems: msg.role === "user" ? "flex-end" : "flex-start" }}>
             {msg.role === "user" ? (
-              <div style={{ background: "linear-gradient(135deg,rgba(76,175,80,0.25),rgba(46,125,50,0.15))", border: "1px solid rgba(76,175,80,0.3)", color: "#c8e6c9", borderRadius: "18px 18px 4px 18px", padding: ".75rem 1.1rem", maxWidth: "82%", fontSize: ".86rem", lineHeight: 1.65 }}>
+              <div style={{ background: "linear-gradient(135deg,var(--sg-chattgron-a25),var(--sg-gron-a15))", border: "1px solid var(--sg-chattgron-a30)", color: "var(--sg-gron-ljus)", borderRadius: "18px 18px 4px 18px", padding: ".75rem 1.1rem", maxWidth: "82%", fontSize: ".86rem", lineHeight: 1.65 }}>
                 {msg.content}
               </div>
             ) : (
               <div style={{ width: "100%", maxWidth: "92%" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: ".45rem", marginBottom: ".35rem", justifyContent: "space-between" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: ".45rem" }}>
-                    <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0 }}>♿</div>
-                    <span style={{ color: "#81c784", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".3px" }}>SpecialGuiden</span>
+                    <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0 }}>♿</div>
+                    <span style={{ color: "var(--sg-chatt-accent)", fontSize: ".72rem", fontWeight: 700, letterSpacing: ".3px" }}>SpecialGuiden</span>
                   </div>
                   <button className="sg-copy-btn"
                     onClick={() => { navigator.clipboard.writeText(tillText(msg.content)).then(() => { const btn = document.getElementById(`sgcopy-${i}`); if (btn) { btn.textContent = "✅"; setTimeout(() => btn.textContent = "📋", 2000); } }); }}
                     id={`sgcopy-${i}`}>📋</button>
                 </div>
-                <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px 18px 18px 18px", padding: ".95rem 1.15rem", fontSize: ".86rem", color: "#c8d8c8", lineHeight: 1.8, whiteSpace: "pre-wrap", boxShadow: "0 2px 16px rgba(0,0,0,0.3)" }}>
+                <div style={{ background: "var(--sg-vit-a06)", border: "1px solid var(--sg-vit-a10)", borderRadius: "4px 18px 18px 18px", padding: ".95rem 1.15rem", fontSize: ".86rem", color: "var(--sg-chatt-text)", lineHeight: 1.8, whiteSpace: "pre-wrap", boxShadow: "0 2px 16px var(--sg-svart-a30)" }}>
                   <Markdown text={msg.content} />
                 </div>
               </div>
@@ -776,11 +776,11 @@ function ChattLage({ onBack }) {
 
         {loading && (
           <div style={{ display: "flex", alignItems: "flex-start", gap: ".5rem", marginBottom: "1rem" }}>
-            <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,#4caf50,#2e7d32)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0, marginTop: 2 }}>♿</div>
-            <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px 18px 18px 18px", padding: ".75rem 1rem" }}>
+            <div style={{ width: 26, height: 26, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", flexShrink: 0, marginTop: 2 }}>♿</div>
+            <div style={{ background: "var(--sg-vit-a06)", border: "1px solid var(--sg-vit-a10)", borderRadius: "4px 18px 18px 18px", padding: ".75rem 1rem" }}>
               <div style={{ display: "flex", gap: ".35rem", alignItems: "center" }}>
                 {[0, .2, .4].map((d, i) => <div key={i} className="sgdot" style={{ animationDelay: `${d}s` }} />)}
-                <span style={{ fontSize: ".74rem", color: "#4a7a4a", marginLeft: ".4rem" }}>Tänker…</span>
+                <span style={{ fontSize: ".74rem", color: "var(--sg-chatt-dampad-5)", marginLeft: ".4rem" }}>Tänker…</span>
               </div>
             </div>
           </div>
@@ -789,7 +789,7 @@ function ChattLage({ onBack }) {
       </div>
 
       {/* Input */}
-      <div style={{ background: "linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))", borderTop: "1px solid rgba(76,175,80,0.15)", padding: ".9rem 1.2rem", flexShrink: 0, boxShadow: "0 -2px 20px rgba(0,0,0,0.3)" }}>
+      <div style={{ background: "linear-gradient(135deg,var(--sg-vit-a04),var(--sg-vit-a02))", borderTop: "1px solid var(--sg-chattgron-a15)", padding: ".9rem 1.2rem", flexShrink: 0, boxShadow: "0 -2px 20px var(--sg-svart-a30)" }}>
         <div style={{ maxWidth: 720, margin: "0 auto", display: "flex", gap: ".6rem", alignItems: "flex-end" }}>
           <textarea
             value={input}
@@ -798,18 +798,18 @@ function ChattLage({ onBack }) {
             placeholder="T.ex. 'Tips på AKK-aktivitet' eller 'Genomgång hygien tre nivåer'..."
             rows={2}
             className="sg-textarea"
-            style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.13)", color: "#c8d8c8" }}
+            style={{ background: "var(--sg-vit-a07)", border: "1px solid var(--sg-vit-a13)", color: "var(--sg-chatt-text)" }}
           />
           <button
             onClick={() => sendMessage(input)}
             disabled={!input.trim() || loading}
             className="sg-send"
-            style={{ background: !input.trim() || loading ? "rgba(76,175,80,0.12)" : "linear-gradient(135deg,#4caf50,#2e7d32)", color: !input.trim() || loading ? "#3a6a3a" : "white" }}>
+            style={{ background: !input.trim() || loading ? "var(--sg-chattgron-a12)" : "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", color: !input.trim() || loading ? "var(--sg-chatt-dampad-6)" : "var(--sg-vit)" }}>
             ➤
           </button>
         </div>
-        <p style={{ textAlign: "center", color: "#81c784", fontSize: ".75rem", fontWeight: 600, margin: ".5rem 0 0" }}>Skriv inte in elevers namn eller andra personuppgifter.</p>
-        <p style={{ textAlign: "center", color: "#2a4a2a", fontSize: ".65rem", margin: ".4rem 0 0" }}>Enter för att skicka · Shift+Enter för ny rad</p>
+        <p style={{ textAlign: "center", color: "var(--sg-chatt-accent)", fontSize: ".75rem", fontWeight: 600, margin: ".5rem 0 0" }}>Skriv inte in elevers namn eller andra personuppgifter.</p>
+        <p style={{ textAlign: "center", color: "var(--sg-chatt-dampad-7)", fontSize: ".65rem", margin: ".4rem 0 0" }}>Enter för att skicka · Shift+Enter för ny rad</p>
       </div>
     </div>
   );
@@ -822,44 +822,44 @@ export default function SpecialGuiden() {
   if (mode === "guide") return <GuidatLage onBack={() => { setMode(null); window.scrollTo(0, 0); }} />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,#e8f5e9,#f1f8e9,#e0f2f1)", fontFamily: "Georgia,serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,var(--sg-gron-yta),var(--sg-gron-yta-2),var(--sg-turkos-yta))", fontFamily: "Georgia,serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
       <style>{`@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.fi{animation:fi .4s ease}`}</style>
       <div className="fi" style={{ textAlign: "center", maxWidth: 480, width: "100%" }}>
         <span style={{ fontSize: "2.8rem" }}>♿</span>
-        <h1 style={{ fontSize: "1.9rem", color: "#1b5e20", margin: ".4rem 0 .2rem", fontWeight: 700, fontFamily: "Georgia,serif" }}>SpecialGuiden</h1>
-        <p style={{ color: "#4a7c59", marginBottom: ".5rem", fontSize: ".88rem" }}>Anpassad undervisning · Lgrsär22 · Grundsärskolan</p>
-        <p style={{ color: "#2e7d32", fontSize: ".8rem", background: "#e8f5e9", border: "1px solid #c8e6c9", borderRadius: 20, padding: "4px 14px", display: "inline-block", marginBottom: "2rem", fontWeight: 600 }}>
+        <h1 style={{ fontSize: "1.9rem", color: "var(--sg-gron-mork)", margin: ".4rem 0 .2rem", fontWeight: 700, fontFamily: "Georgia,serif" }}>SpecialGuiden</h1>
+        <p style={{ color: "var(--sg-text-dampad)", marginBottom: ".5rem", fontSize: ".88rem" }}>Anpassad undervisning · Lgrsär22 · Grundsärskolan</p>
+        <p style={{ color: "var(--sg-gron)", fontSize: ".8rem", background: "var(--sg-gron-yta)", border: "1px solid var(--sg-gron-ljus)", borderRadius: 20, padding: "4px 14px", display: "inline-block", marginBottom: "2rem", fontWeight: 600 }}>
           Elever med IF · Högstadiet · AKK & bildstöd
         </p>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1rem" }}>
-          <button onClick={() => setMode("chat")} style={{ background: "linear-gradient(135deg,#1b5e20,#2e7d32)", color: "white", border: "none", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "Georgia,serif", boxShadow: "0 4px 20px rgba(27,94,32,0.25)" }}>
+          <button onClick={() => setMode("chat")} style={{ background: "linear-gradient(135deg,var(--sg-gron-mork),var(--sg-gron))", color: "var(--sg-vit)", border: "none", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "Georgia,serif", boxShadow: "0 4px 20px var(--sg-gronmork-a25)" }}>
             <div style={{ fontSize: "1.7rem", marginBottom: ".35rem" }}>💬</div>
             <div style={{ fontSize: ".95rem", fontWeight: 700, marginBottom: ".2rem" }}>Chattläge</div>
             <div style={{ fontSize: ".72rem", opacity: .88 }}>Beskriv fritt – få råd och genomgångar direkt</div>
           </button>
-          <button onClick={() => setMode("guide")} style={{ background: "white", color: "#1b5e20", border: "2px solid #a5d6a7", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "Georgia,serif", boxShadow: "0 4px 20px rgba(27,94,32,0.08)" }}>
+          <button onClick={() => setMode("guide")} style={{ background: "var(--sg-vit)", color: "var(--sg-gron-mork)", border: "2px solid var(--sg-gron-kant)", borderRadius: 16, padding: "1.5rem .9rem", cursor: "pointer", fontFamily: "Georgia,serif", boxShadow: "0 4px 20px var(--sg-gronmork-a08)" }}>
             <div style={{ fontSize: "1.7rem", marginBottom: ".35rem" }}>📋</div>
             <div style={{ fontSize: ".95rem", fontWeight: 700, marginBottom: ".2rem" }}>Guidat läge</div>
-            <div style={{ fontSize: ".72rem", color: "#4a7c59" }}>Välj ämne, moment och nivåer steg för steg</div>
+            <div style={{ fontSize: ".72rem", color: "var(--sg-text-dampad)" }}>Välj ämne, moment och nivåer steg för steg</div>
           </button>
         </div>
 
-        <div style={{ background: "white", borderRadius: 12, padding: ".9rem 1rem", border: "1px solid #c8e6c9", marginBottom: ".8rem", textAlign: "left" }}>
-          <p style={{ margin: "0 0 .4rem", color: "#2e7d32", fontSize: ".78rem", fontWeight: 700 }}>🌟 Vad SpecialGuiden ger dig:</p>
+        <div style={{ background: "var(--sg-vit)", borderRadius: 12, padding: ".9rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: ".8rem", textAlign: "left" }}>
+          <p style={{ margin: "0 0 .4rem", color: "var(--sg-gron)", fontSize: ".78rem", fontWeight: 700 }}>🌟 Vad SpecialGuiden ger dig:</p>
           <ul style={{ margin: 0, paddingLeft: "1.2rem" }}>
             {["Genomgångar anpassade till Lgrsär22", "Tre nivåer: Tidig, Grundläggande, Utvecklad", "AKK-tips och bildstödstrategier", "NPF-anpassningskort (ADHD, autism, epilepsi m.fl.)", "Resurser från SPSM, Widgit och Dart"].map((item, i) => (
-              <li key={i} style={{ fontSize: ".78rem", color: "#1a3a2a", marginBottom: ".2rem", lineHeight: 1.5 }}>{item}</li>
+              <li key={i} style={{ fontSize: ".78rem", color: "var(--sg-text)", marginBottom: ".2rem", lineHeight: 1.5 }}>{item}</li>
             ))}
           </ul>
         </div>
 
-        <div style={{ background: "white", borderRadius: 12, padding: ".7rem 1rem", border: "1px solid #c8e6c9", marginBottom: "1.2rem" }}>
-          <p style={{ margin: 0, color: "#2e7d32", fontSize: ".78rem", fontWeight: 700 }}>💬 Prova i chattläget:</p>
-          <p style={{ margin: ".2rem 0 0", color: "#4a7c59", fontSize: ".75rem" }}>"Hygien tre nivåer" · "AKK kommunikationsträning" · "Räkna pengar vardagsaktivitet"</p>
+        <div style={{ background: "var(--sg-vit)", borderRadius: 12, padding: ".7rem 1rem", border: "1px solid var(--sg-gron-ljus)", marginBottom: "1.2rem" }}>
+          <p style={{ margin: 0, color: "var(--sg-gron)", fontSize: ".78rem", fontWeight: 700 }}>💬 Prova i chattläget:</p>
+          <p style={{ margin: ".2rem 0 0", color: "var(--sg-text-dampad)", fontSize: ".75rem" }}>"Hygien tre nivåer" · "AKK kommunikationsträning" · "Räkna pengar vardagsaktivitet"</p>
         </div>
 
-        <p style={{ color: "#a5d6a7", fontSize: ".7rem" }}>av MD · Grundsärskolan · Lgrsär22</p>
+        <p style={{ color: "var(--sg-gron-kant)", fontSize: ".7rem" }}>av MD · Grundsärskolan · Lgrsär22</p>
       </div>
     </div>
   );
