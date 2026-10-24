@@ -518,7 +518,7 @@ function GuidatLage({ onBack }) {
           <span style={{ fontSize: "1.5rem" }}>♿</span>
           <div>
             <div style={{ color: "var(--sg-t-gron-mork)", fontWeight: 700, fontSize: ".95rem" }}>Specialguiden</div>
-            <div style={{ color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>Guidat läge · Lgrsär22 · Grundsärskolan</div>
+            <div style={{ color: "var(--sg-text-dampad)", fontSize: ".72rem" }}>Guidat läge · Lgrsär22 · Anpassad Grundskolan</div>
           </div>
         </div>
 
@@ -716,7 +716,7 @@ function ChattLage({ onBack }) {
         <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg,var(--sg-chatt-gron),var(--sg-gron))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem", flexShrink: 0, boxShadow: "0 2px 12px var(--sg-chattgron-a40)" }}>♿</div>
         <div style={{ flex: 1 }}>
           <div style={{ color: "var(--sg-chatt-accent)", fontWeight: 700, fontSize: ".95rem", fontFamily: "'Newsreader',serif", letterSpacing: ".3px" }}>Specialguiden</div>
-          <div style={{ color: "var(--sg-chatt-dampad-2)", fontSize: ".68rem" }}>Chattläge · Lgrsär22 · Grundsärskolan · IF</div>
+          <div style={{ color: "var(--sg-chatt-dampad-2)", fontSize: ".68rem" }}>Chattläge · Lgrsär22 ·Anpassad Grundskolan · IF</div>
         </div>
         {messages.length > 0 && (
           <button onClick={() => setMessages([])} style={{ background: "var(--sg-vit-a07)", border: "1px solid var(--sg-vit-a12)", borderRadius: 7, padding: ".3rem .8rem", color: "var(--sg-chatt-dampad)", cursor: "pointer", fontFamily: "inherit", fontSize: ".72rem" }}>Rensa</button>
@@ -831,7 +831,7 @@ export default function SpecialGuiden() {
           <div>
             <span style={{ fontSize: "2rem" }}>♿</span>
             <h1 style={{ fontSize: "clamp(2.2rem,8vw,3rem)", color: "var(--sg-text)", margin: ".2rem 0 .3rem", lineHeight: 1.05 }}>Special<em>guiden</em></h1>
-            <p style={{ color: "var(--sg-text-dampad)", margin: 0, fontSize: ".92rem" }}>Anpassad undervisning · Lgrsär22 · Grundsärskolan</p>
+            <p style={{ color: "var(--sg-text-dampad)", margin: 0, fontSize: ".92rem" }}>Anpassad undervisning · Lgrsär22 · Anpassad Grundskolan</p>
           </div>
           <div className="n-motif n-motif--quarter" aria-hidden="true"></div>
         </div>
@@ -866,7 +866,7 @@ export default function SpecialGuiden() {
           <p style={{ margin: ".2rem 0 0", color: "var(--sg-text-dampad)", fontSize: ".75rem" }}>"Hygien tre nivåer" · "AKK kommunikationsträning" · "Räkna pengar vardagsaktivitet"</p>
         </div>
 
-        <p style={{ color: "var(--sg-text-dampad)", fontSize: ".7rem" }}>av MD · Grundsärskolan · Lgrsär22</p>
+        <p style={{ color: "var(--sg-text-dampad)", fontSize: ".7rem" }}>av MD · Anpassad Grundskolan · Lgrsär22</p>
         <NorvayFooter />
       </div>
     </div>
