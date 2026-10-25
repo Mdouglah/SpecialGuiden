@@ -84,8 +84,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json(response);
   } catch (error) {
-    // Detaljerna loggas på servern (syns i Vercels loggar), inget känsligt till besökaren
-    console.error("Anthropic-fel:", error);
+    // Logga bara statuskod och feltyp (syns i Vercels loggar), aldrig felmeddelandets text eller hela felobjektet
+    console.error("Anthropic-fel:", error?.status ?? "inget svar", error?.error?.error?.type || error?.name || "okänd feltyp");
     return res.status(502).json({ error: "AI-tjänsten svarade inte. Försök igen om en stund." });
   }
 }
